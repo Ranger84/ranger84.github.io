@@ -467,7 +467,7 @@
 <li>packages：使用到的包</li>
 <li><strong>最重要的是<code>_config.yml</code>文件</strong>，这是Hexo的配置文件，里面有很多配置项，可以根据自己的需要进行修改。具体如何进行配置在<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">Hexo的官方文档中有详细说明</a>。</li>
 </ul>
-<p>非常方便快捷的方式是在VS Code中运行<code>ctrl+shift+E</code>（侧边栏那个放大镜explore也可以）打开该文件夹，然后就可以在左边的侧边栏里看到文件夹的目录结构了，可以随时点击进入想要修改的文档作修改，非常方便。</p>
+<p>非常方便快捷的方式是在VS Code中运行<code>ctrl+shift+E</code>（侧边栏那个图标像文件一样的explorer也可以）打开该文件夹，然后就可以在左边的侧边栏里看到文件夹的目录结构了，可以随时点击进入想要修改的文档作修改，非常方便。</p>
 <p>然后在终端中输入<code>hexo server</code>就可以启动本地服务器，然后在浏览器中访问<code>http://localhost:4000</code>就可以看到本地的博客了。</p>
 <h2 id="生成静态网站"><a href="#生成静态网站" class="headerlink" title="生成静态网站"></a>生成静态网站</h2><p>运行指令<code>hexo generate</code>就可以生成静态网站，这时候可以看到目录下多了一个名为public的文件夹生成的文件会放在<code>public</code>文件夹中。</p>
 <h2 id="预览效果"><a href="#预览效果" class="headerlink" title="预览效果"></a>预览效果</h2><p>运行指令<code>hexo server</code>就可以启动本地服务器，然后在浏览器中访问<code>http://localhost:4000</code>就可以看到本地的博客了。这时候显示的是初始样式，后续可以自行配置其他主体或者自己编写。</p>
@@ -502,7 +502,7 @@
 <p><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164611.png" alt="repeat-clone.png"></p>
 <h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><p>下载主题后，需要在<code>_config.yml</code>文件中进行配置。<br>找到<code>_config.yml</code>文件中的theme字段，将其值设置为<code>theme: hexo-theme-matery</code>然后保存。</p>
 <p><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164439.png" alt="config-theme.png"></p>
-<h2 id="自定义你的博客结构"><a href="#自定义你的博客结构" class="headerlink" title="自定义你的博客结构"></a>自定义你的博客结构</h2><p>vs code左边目录里可以看到刚才下载好的主题下有各个组件，，需要修改哪些部分就在对应的文件下修改代码。这里你可能需要一些基本的网络开发知识技术（如CSS），基于模板文件进行修改（编写、样式设定），做出自己喜欢的网页</p>
+<h2 id="自定义你的博客结构"><a href="#自定义你的博客结构" class="headerlink" title="自定义你的博客结构"></a>自定义你的博客结构</h2><p>vs code左边目录里可以看到刚才下载好的主题下有各个组件，需要修改哪些部分就在对应的文件下修改代码。这里你可能需要一些基本的网络开发知识技术（如CSS），基于模板文件进行修改（编写、样式设定），做出自己喜欢的网页</p>
 <h1 id="开始写作博客文章"><a href="#开始写作博客文章" class="headerlink" title="开始写作博客文章"></a>开始写作博客文章</h1><h2 id="关于Markdown"><a href="#关于Markdown" class="headerlink" title="关于Markdown"></a>关于Markdown</h2><p>写作博客文章使用Markdown语法。Markdown语法是一种标记语言，只需要记住一些非常简单的格式标记符号就可以输出格式整齐美观的文档，非常简单易上手。Hexo会自动将Markdown文件转换成HTML文件。</p>
 <p>有很多好用的Markdown编辑器，如Typora、Mark Text等。我个人用过的是<strong>Typora</strong>和<strong>VS Code</strong>（没错VS Code也是可以编辑的），VS Code的Markdown插件也很好用。只要安装了相应的插件（比如live preview）写作过程中也可以实时预览文档效果，非常方便。</p>
 <h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><p>运行指令<code>hexo new &quot;文章标题&quot;</code>就可以新建一篇文章，然后编辑文章内容。运行完成后就可以在文件目录里看到生成的Markdown格式文件了。<br>注意：每次修改文章后都需要重新运行<code>hexo generate</code>命令才会更新网站内容。</p>
@@ -579,6 +579,9 @@
 <h2 id="3-远端部署部分"><a href="#3-远端部署部分" class="headerlink" title="3.远端部署部分"></a>3.远端部署部分</h2><ul>
 <li>（1）<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/43378060/meaning-of-the-github-message-push-declined-due-to-email-privacy-restrictions">更改邮箱设置</a></li>
 <li>（2）<a target="_blank" rel="noopener" href="https://medium.com/@mugaojoy/how-to-resolve-push-declined-due-to-repository-rule-violations-error-71901ea530e8">对隐私敏感信息设置的一些说明以及另一种解决方案</a></li>
+</ul>
+<h2 id="4-系列教程"><a href="#4-系列教程" class="headerlink" title="4.系列教程"></a>4.系列教程</h2><ul>
+<li>（1）<a target="_blank" rel="noopener" href="https://blog.manyacan.com/archives/2016/">Hexo教程系列</a></li>
 </ul>
 
                 
@@ -948,9 +951,9 @@
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
                    type="playlist"
-                   id="503838841"
+                   id="12778952489"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
@@ -972,7 +975,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2024</span>
+                <span id="year">2024</span>
             
             <a href="/about" target="_blank">John Doe</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
