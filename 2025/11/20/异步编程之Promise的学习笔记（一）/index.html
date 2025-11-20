@@ -571,14 +571,23 @@
 <ul>
 <li>页面显示初始内容</li>
 <li><code>&lt;h1 id=&quot;demo&quot;&gt;</code>元素为空</li>
-<li>Promise被创建并立即开始执行<br>2.Promise执行阶段（0-3秒）：</li>
+<li>Promise被创建并立即开始执行</li>
+</ul>
+<p>2.Promise执行阶段（0-3秒）：</p>
+<ul>
 <li>Promise执行器函数同步执行</li>
 <li>setTimeout 被调用，开始3秒倒计时</li>
-<li>Promise处于”pending”状态<br>3.Promise解析阶段（3秒时）：</li>
+<li>Promise处于”pending”状态</li>
+</ul>
+<p>3.Promise解析阶段（3秒时）：</p>
+<ul>
 <li><code>setTimeout</code>回调函数执行</li>
 <li>myResolve(“I love You !!”) 被调用</li>
 <li>Promise状态从”pending”变为”fulfilled”</li>
-<li>值”I love You !!”被存储<br>4.回调执行阶段（3秒后）：</li>
+<li>值”I love You !!”被存储</li>
+</ul>
+<p>4.回调执行阶段（3秒后）：</p>
+<ul>
 <li><code>.then()</code>中的回调函数被调用</li>
 <li><code>value</code>参数接收”I love You !!”</li>
 <li>DOM被更新，页面内容改变</li>
