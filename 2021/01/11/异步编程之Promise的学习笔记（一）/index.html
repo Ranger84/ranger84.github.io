@@ -417,7 +417,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2025-11-22
+                    2025-11-23
                 </div>
                 
 
@@ -601,52 +601,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 id="执行器函数"><a href="#执行器函数" class="headerlink" title="执行器函数"></a>执行器函数</h2><p>执行器函数是Promise的核心概念</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="执行器函数"><a href="#执行器函数" class="headerlink" title="执行器函数"></a>执行器函数</h2><p>执行器函数是Promise的核心概念</p>
 <h3 id="什么是执行器函数？"><a href="#什么是执行器函数？" class="headerlink" title="什么是执行器函数？"></a>什么是执行器函数？</h3><p>执行器函数是传递给Promise构造函数的参数，它在Promise创建时立即同步执行。它负责启动异步操作，并根据操作结果决定Promise的最终状态。</p>
 <h3 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(executorFunction);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">executorFunction</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="comment">// 异步操作代码</span></span><br><span class="line">  <span class="comment">// 根据结果调用 resolve(value) 或 reject(reason)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="详细分析"><a href="#详细分析" class="headerlink" title="详细分析"></a>详细分析</h3><p>1.执行器函数的参数<br>执行器函数接收两个重要的函数作为参数：</p>
