@@ -410,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2024-10-27
+                    2025-11-22
                 </div>
                 
 
@@ -467,8 +467,7 @@
 <blockquote>
 <p>If you are behind a proxy, please make sure that the ‘proxy’ config is set properly</p>
 </blockquote>
-<p>  <img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164515.png" alt="FetchError"></p>
-<p>  这一步是超级大坑，花了我非常多的时间。搜索之后发现似乎国内要安装Hexo都会在这一步遇到问题。而且不仅是国内，好像大家都在这一步遇到过问题……<br>  这一步的报错信息说明是proxy，代理的问题，主要问题应该有两个</p>
+<p>  <img src="https://raw.githubusercontent.com/Ranger84/pictures-blog/main/img/FetchError.png" alt="FetchError"><br>  这一步是超级大坑，花了我非常多的时间。搜索之后发现似乎国内要安装Hexo都会在这一步遇到问题。而且不仅是国内，好像大家都在这一步遇到过问题……<br>  这一步的报错信息说明是proxy，代理的问题，主要问题应该有两个</p>
 <ul>
 <li>1.代理设置问题，据说npm国内必须重新设置代理才能连上。必须根据自己的网络端口去正确设置代理。</li>
 <li>2.npm源的问题，国内连npm源好像贼慢，得重新挂源</li>
@@ -507,7 +506,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;自选文件夹名&gt;</span><br><span class="line">cd &lt;自选文件夹名&gt;（转到该目录下）</span><br><span class="line">npm install（安装依赖）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<h2 id="文件夹目录结构"><a href="#文件夹目录结构" class="headerlink" title="文件夹目录结构"></a>文件夹目录结构</h2><p>初始化好之后，你的文件夹看起来大概长这样：<br>.<br>├── _config.yml<br>├── package.json<br>├── scaffolds<br>├── source<br>|   ├── _drafts<br>|   └── _posts<br>└── themes<br><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164432.png" alt="index.png"></p>
+<h2 id="文件夹目录结构"><a href="#文件夹目录结构" class="headerlink" title="文件夹目录结构"></a>文件夹目录结构</h2><p>初始化好之后，你的文件夹看起来大概长这样：<br>.<br>├── _config.yml<br>├── package.json<br>├── scaffolds<br>├── source<br>|   ├── _drafts<br>|   └── _posts<br>└── themes</p>
+<p><img src="https://raw.githubusercontent.com/Ranger84/pictures-blog/main/img/index.png" alt="index.png"></p>
 <ul>
 <li>node modules是一些必要模块</li>
 <li>source：用markdown写文章</li>
@@ -527,8 +527,9 @@
 </ul>
 <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>在使用<code>git clone</code>这一步，可能会遇到的一个问题是：</p>
 <blockquote>
-<p>报错原因：OpenSSL SSL_read:SSL_ERROR_SYSCALL, errno 0<br><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164409.png" alt="git-clone-error.png"></p>
+<p>报错原因：OpenSSL SSL_read:SSL_ERROR_SYSCALL, errno 0</p>
 </blockquote>
+<p><img src="https://raw.githubusercontent.com/Ranger84/pictures-blog/main/img/git-clone-error.png" alt="git-clone-error.png"></p>
 <h3 id="（1）问题原因"><a href="#（1）问题原因" class="headerlink" title="（1）问题原因"></a>（1）问题原因</h3><p>出现的原因可能有两种</p>
 <ul>
 <li>因为git在拉取或者提交项目时，中间会有git的http和https代理，但是我们本地环境本身就有SSL协议了，所以取消git的https代理即可，不行再取消http的代理。</li>
@@ -541,15 +542,15 @@
 <blockquote>
 <p>Failed to connect to github.com port 443 after 21118 ms:445 atter 21118ms:<br>Could not connect to server</p>
 </blockquote>
-<p><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164525.png" alt="connect-error.png"></p>
+<p><img src="https://raw.githubusercontent.com/Ranger84/pictures-blog/main/img/connect-error.png" alt="connect-error.png"></p>
 <p>说明无法连接到服务器，参考一些网友的回复关闭了科学上网工具就可以正常下载了。</p>
 <blockquote>
 <p>参考帖子(<a target="_blank" rel="noopener" href="https://blog.csdn.net/good_good_xiu/article/details/118567249)%E4%B8%AD%E7%9A%84%E8%AF%84%E8%AE%BA%EF%BC%8C%E8%AF%84%E8%AE%BA%E5%8C%BA%E8%BF%98%E6%9C%89%E4%B8%80%E7%A7%8D%E8%AF%B4%E6%B3%95%E6%98%AF%E5%9B%A0%E4%B8%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84SSL%E8%AF%81%E4%B9%A6%E6%B2%A1%E6%9C%89%E7%BB%8F%E8%BF%87%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%BA%E6%9E%84%E7%9A%84%E7%AD%BE%E7%BD%B2%EF%BC%8C%E6%89%80%E4%BB%A5%E6%89%8D%E6%8A%A5%E9%94%99">https://blog.csdn.net/good_good_xiu/article/details/118567249)中的评论，评论区还有一种说法是因为服务器的SSL证书没有经过第三方机构的签署，所以才报错</a><br>解决方法：git config –global http.sslVerify “false”<br>但我的情况使用这个方法后依然是失败的，但是关掉梯子之后就可以正常下载了.</p>
 </blockquote>
 <h3 id="（4）进一步的问题"><a href="#（4）进一步的问题" class="headerlink" title="（4）进一步的问题"></a>（4）进一步的问题</h3><p>主题开始下载，但是出现了新的报错（如图），这个我也不知道是什么原因，好像每次下载一些就会断掉，但是因为他能够开始下载所以尝试重复了运行几次，最后成功装完了……</p>
-<p><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164611.png" alt="repeat-clone.png"></p>
+<p><img src="https://raw.githubusercontent.com/Ranger84/pictures-blog/main/img/repeat-clone.png" alt="repeat-clone.png"></p>
 <h2 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h2><p>下载主题后，需要在<code>_config.yml</code>文件中进行配置。<br>找到<code>_config.yml</code>文件中的theme字段，将其值设置为<code>theme: hexo-theme-matery</code>然后保存。</p>
-<p><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164439.png" alt="config-theme.png"></p>
+<p><img src="https://raw.githubusercontent.com/Ranger84/pictures-blog/main/img/config-theme.png" alt="config-theme.png"></p>
 <h2 id="自定义你的博客结构"><a href="#自定义你的博客结构" class="headerlink" title="自定义你的博客结构"></a>自定义你的博客结构</h2><p>vs code左边目录里可以看到刚才下载好的主题下有各个组件，需要修改哪些部分就在对应的文件下修改代码。这里你可能需要一些基本的网络开发知识技术（如CSS），基于模板文件进行修改（编写、样式设定），做出自己喜欢的网页</p>
 <h1 id="开始写作博客文章"><a href="#开始写作博客文章" class="headerlink" title="开始写作博客文章"></a>开始写作博客文章</h1><h2 id="关于Markdown"><a href="#关于Markdown" class="headerlink" title="关于Markdown"></a>关于Markdown</h2><p>写作博客文章使用Markdown语法。Markdown语法是一种标记语言，只需要记住一些非常简单的格式标记符号就可以输出格式整齐美观的文档，非常简单易上手。Hexo会自动将Markdown文件转换成HTML文件。</p>
 <p>有很多好用的Markdown编辑器，如Typora、Mark Text等。我个人用过的是<strong>Typora</strong>和<strong>VS Code</strong>（没错VS Code也是可以编辑的），VS Code的Markdown插件也很好用。只要安装了相应的插件（比如live preview）写作过程中也可以实时预览文档效果，非常方便。</p>
@@ -567,7 +568,7 @@
 <li>首先安装hexo-deployer-git插件，<code>npm install hexo-deployer-git --save</code></li>
 <li>打开<code>config.yml</code>文件，找到deploment块</li>
 </ul>
-<p><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164458.png" alt="deploy.png"></p>
+<p>!deploy.png<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Ranger84/pictures-blog/main/img/deploy.png"></a></p>
 <ul>
 <li><p>然后配置如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/username/username.github.io.git</span><br><span class="line">  branch: main</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -581,12 +582,14 @@
 <h2 id="部署时会出现的问题"><a href="#部署时会出现的问题" class="headerlink" title="部署时会出现的问题"></a>部署时会出现的问题</h2><h3 id="（1）身份验证问题"><a href="#（1）身份验证问题" class="headerlink" title="（1）身份验证问题"></a>（1）身份验证问题</h3><p>运行<code>hexo clean</code>和<code>hexo deploy</code>之后出现红色报错，同时还会给出如下提示信息：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">***Please tell me who you are</span><br><span class="line">Run</span><br><span class="line"></span><br><span class="line">git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">git config --global user.name &quot;your name&quot;</span><br><span class="line"></span><br><span class="line"> to set your account&#x27;s default identity.</span><br><span class="line">Omit --global to set the identity only in this repository.</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164503.png" alt="identity-authentication.png"></p>
+
+
+<p><img src="https://raw.githubusercontent.com/Ranger84/pictures-blog/main/img/identity-authentication.png" alt="identity-authentication.png"></p>
 <p>参照上面的信息，运行给出的命令，也就是输入你的Github账号和用户名：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">git config --global user.name &quot;your name&quot;</span><br></pre></td></tr></table></figure>
 <p>这一步需要进行设备验证（旧一些的教程会弹出输入框，直接输入账号密码，但是目前必须通过验证）。有两种验证方式，根据提示操作输入验证码通过验证就可以了。</p>
 <h3 id="2-隐私信息问题"><a href="#2-隐私信息问题" class="headerlink" title="(2)隐私信息问题"></a>(2)隐私信息问题</h3><p>通过身份验证、再次运行<code>hexo clean</code>和<code>hexo deploy</code>之后，出现如下报错：push declined due to repository rule violations</p>
-<p><img src="https://github.com/Ranger84/pictures-blog/blob/main/img/20241026164415.png" alt="rule-violations.png"></p>
+<p><img src="https://raw.githubusercontent.com/Ranger84/pictures-blog/main/img/rule-violations.png" alt="rule-violations.png"></p>
 <p>这一步可能的原因是，Github会对仓库进行一些规则限制，比如禁止推送包含敏感信息的提交等，具体的解释说明可以在报错信息给出的网址上查阅。</p>
 <p>解决这一问题的一个有效方案参见<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/43378060/meaning-of-the-github-message-push-declined-due-to-email-privacy-restrictions/43378177">这篇回答</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26819733/article/details/78374129">CSDN关于这一问题的一篇日志</a>就是根据这篇回答给出的。</p>
 <p>解决方法：</p>
@@ -1083,7 +1086,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">97k</span>
+                        class="white-color">100.9k</span>
             
             
             
@@ -1163,41 +1166,55 @@
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+        data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
+    
 
+        
+            <a href="mailto:lancelot84@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+                data-position="top" data-delay="50">
+                <i class="fas fa-envelope-open"></i>
+            </a>
+            
 
+                
+                    <a href="https://www.bilibili.com/?spm_id_from=333.337.0.0" class="tooltipped" target="_blank"
+                        data-tooltip="关注我的Facebook: https://www.bilibili.com/?spm_id_from=333.337.0.0" data-position="top"
+                        data-delay="50">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    
 
-    <a href="mailto:lancelot84@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
+                        
 
+                                
+                                    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=524706685"
+                                        class="tooltipped" target="_blank"
+                                        data-tooltip="QQ联系我: 524706685" data-position="top"
+                                        data-delay="50">
+                                        <i class="fab fa-qq"></i>
+                                    </a>
+                                    
 
+                                        
+                                            <a href="https://weibo.com/u/3649086851" class="tooltipped" target="_blank"
+                                                data-tooltip="关注我的微博: https://weibo.com/u/3649086851" data-position="top"
+                                                data-delay="50">
+                                                <i class="fab fa-weibo"></i>
+                                            </a>
+                                            
 
+                                                
 
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=524706685" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 524706685" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-    <a href="https://weibo.com/u/3649086851" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/u/3649086851" data-position="top" data-delay="50">
-        <i class="fab fa-weibo"></i>
-    </a>
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
+                                                        
+                                                            <a href="/atom.xml" class="tooltipped"
+                                                                target="_blank" data-tooltip="其他好玩的网页"
+                                                                data-position="top" data-delay="50">
+                                                                <i class="fas fa-rss"></i>
+                                                            </a>
+                                                            </div>
     </div>
 </footer>
 
