@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="前端学习笔记（一）, 眠らない25時">
-    <meta name="description" content="">
+    <meta name="keywords" content="前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库, 眠らない25時">
+    <meta name="description" content="前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库🟦 📌 Clip — 整体核心流程图（Emoji 大整合版）点击这里查看代码解析
+🟩 用户点击某分类（category）
+    ↓
+🟦 detectAndDis">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>前端学习笔记（一） | 眠らない25時</title>
+    <title>前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库 | 眠らない25時</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -362,12 +365,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">前端学习笔记（一）</h1>
+                    <h1 class="description center-align post-title">前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库</h1>
                 </div>
             </div>
         </div>
@@ -389,9 +392,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -410,21 +417,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2025-11-22
+                    2025-11-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    3.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    12 Min
                 </div>
                 
 
@@ -444,7 +451,336 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库"><a href="#前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库" class="headerlink" title="前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库"></a>前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库</h1><h2 id="🟦-📌-Clip-—-整体核心流程图（Emoji-大整合版）"><a href="#🟦-📌-Clip-—-整体核心流程图（Emoji-大整合版）" class="headerlink" title="🟦 📌 Clip — 整体核心流程图（Emoji 大整合版）"></a>🟦 📌 Clip — 整体核心流程图（Emoji 大整合版）</h2><details><summary>点击这里查看代码解析</summary><pre><code>
+🟩 用户点击某分类（category）
+    ↓
+🟦 detectAndDisplayImages(category)
+    ↓
+🟦 初始化计数器 & 清空画廊
+    ↓
+🟦 Loop（直到连续失败 < 10）
+      ↓
+      🟦 Step 1：确认分类未被切换
+      ↓
+      🟪 Step 2：取得 imageUrl
+            → 调用 getImageURL(number, category)
+              ↓
+              🟪 取得 baseUrl
+              ↓
+              🟪 尝试四种格式（jpg → jpeg → png → gif）
+                    ↓
+                    🟨 调用 checkImageExists(url)
+                        ↓
+                        🟨 new Image() 预加载
+                        ↓
+                        🟩 onload → exists = true
+                        🟧 onerror → exists = false
+              ↓
+              🟩 找到有效 URL → return url
+              🟧 全部失败 → return null
+      ↓
+      🟩 Step 3：若 URL 存在：
+             调用 displaySingleImage(url, displayedCount)
+                 ↓
+                 🟦 插入 loading 卡片
+                 ↓
+                 🟨 new Image() 预加载真实图片
+                 ↓
+                 🟩 onload：
+                        • 替换 loading → <img>
+                        • 添加 loaded class
+                        • resolve()
+                 ↓
+                 🟧 onerror：
+                        • 显示“加载失败”
+                        • resolve()
+             ↓
+             displayedCount++
+             consecutiveFailures = 0
+      ↓
+      🟧 Step 4：若 URL 不存在：
+             consecutiveFailures++
+      ↓
+      🟦 Step 5：currentNumber++ → 检查下一张
+      ↓
+      🟦 Step 6：等待 30ms（降低请求压力）
+      ↓
+↺ 回到 Loop 开头继续
+
+<p></code></pre></details></p>
+<p>🎉 整体一句话总结</p>
+<blockquote>
+<p>系统从编号 1 开始，不断尝试各种格式的图片 URL，<br>找到后预加载 → 显示，找不到则累加失败计数，<br>连续失败 10 次后认为没有更多图片，停止流程。</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这段代码是用来实现一个图像库，允许用户查看不同类别的图片，并且支持一些交互功能，比如切换分类、查看图片等。</p>
+<h2 id="图片分类配置"><a href="#图片分类配置" class="headerlink" title="图片分类配置"></a>图片分类配置</h2><p>代码开头定义了一个<code>imageCategories</code>对象，包含 n 个图片分类,每个分类都有<code>name</code>（分类的名称，用于展示）和<code>baseUrl</code>（图片的基础 URL），图片的实际地址会根据这个 URL 和图片的编号拼接得到。</p>
+<h2 id="分类和状态管理"><a href="#分类和状态管理" class="headerlink" title="分类和状态管理"></a>分类和状态管理</h2><ul>
+<li><code>currentCategory</code>和<code>activeRequestCategory</code>用来跟踪当前显示的图片分类。<code>currentCategory</code>是当前显示的分类，<code>activeRequestCategory</code>用来确保请求过程中没有切换分类。</li>
+<li><code>gallery</code>变量存储了页面上显示图片的 DOM 元素，所有图片会被添加到这个元素中。</li>
+</ul>
+<h3 id="关键函数解释"><a href="#关键函数解释" class="headerlink" title="关键函数解释"></a>关键函数解释</h3><ul>
+<li><code>resetGalleryState()</code>:清空画廊内容，显示一个加载中的信息。</li>
+<li><code>checkImageExists(url, targetCategory)</code>:检查指定 URL 的图片是否存在，防止请求的图片不存在或分类已经切换。这个函数会先检查当前请求的分类是否和目标分类一致，如果不一致则停止检查。</li>
+<li><code>getImageURL(number, category)</code>:这个函数用来获取图片的 URL。它会根据分类和图片编号构建图片的 URL，并检查该图片是否存在。如果图片存在，则返回 URL，如果不存在则尝试其他格式的图片。</li>
+<li><code>detectAndDisplayImages(category)</code>:这个函数负责从服务器获取图片并展示到页面上。它会根据分类加载图片，最多允许连续 10 次加载失败，超过则停止加载。</li>
+<li><code>displaySingleImage(url, index)</code>:显示单张图片的函数。它会创建一个加载中的卡片，加载完图片后替换成实际的图片。</li>
+<li><code>displayGallery(category)</code>:加载并显示指定分类的图片。它会调用<code>detectAndDisplayImages</code>来获取并显示图片。</li>
+<li><code>switchCategory(category)</code>:切换图片分类的函数。如果用户点击了不同的分类，它会中断当前的请求，切换到新的分类并重新加载图片。</li>
+<li><code>setupCategorySwitcher()</code>:设置导航栏中的分类切换功能。当用户点击不同分类的链接时，会调用<code>switchCategory</code>来切换分类并更新显示的图片。</li>
+</ul>
+<h3 id="图片查看器（ImageViewer-类）"><a href="#图片查看器（ImageViewer-类）" class="headerlink" title="图片查看器（ImageViewer 类）"></a>图片查看器（ImageViewer 类）</h3><p><code>ImageViewer</code>:类实现了一个图片查看器，支持查看单张图片，并具备缩放、拖拽和浏览其他图片的功能：</p>
+<ul>
+<li><code>createOverlay()</code>:创建一个全屏图片查看的覆盖层，包含了关闭按钮、缩放按钮和图片导航按钮。</li>
+<li><code>bindEvents()</code>:绑定事件，处理关闭、导航（上一个&#x2F;下一个图片）、缩放、拖拽等操作。</li>
+<li><code>zoomIn()</code>,<code>zoomOut()</code>,<code>resetZoom()</code>:这些方法用来实现图片的缩放功能。</li>
+<li><code>startDrag()</code>,<code>drag()</code>,<code>endDrag()</code>:实现图片拖拽功能，允许用户在查看大图时移动图片。</li>
+<li><code>showImage()</code>:加载并显示当前选中的图片。</li>
+<li><code>open()</code>,<code>close()</code>:打开和关闭图片查看器。<code>open()</code>会显示指定的图片，<code>close()</code>会关闭图片查看器。</li>
+<li><code>open()</code>,<code>close()</code>:放大图片。</li>
+<li><code>handleResetZoom()</code>:允许用户在图片查看器中查看前后图片。</li>
+</ul>
+<h3 id="导航栏的粘性定位"><a href="#导航栏的粘性定位" class="headerlink" title="导航栏的粘性定位"></a>导航栏的粘性定位</h3><p><code>myFunction()</code>:使导航栏在用户滚动页面时始终固定在顶部。当用户滚动页面时，如果页面向下滚动超过了导航栏的位置，导航栏会变得固定在页面顶部（sticky）。</p>
+<h3 id="初始化和交互"><a href="#初始化和交互" class="headerlink" title="初始化和交互"></a>初始化和交互</h3><ul>
+<li><code>addImageClickEvents()</code>:给图片添加点击事件，用户点击图片时会打开图片查看器。</li>
+<li><code>setupCategorySwitcher()</code>:设置分类切换功能，使得用户点击导航栏中的分类时，会切换显示对应分类的图片。</li>
+<li><code>displayGallery(&#39;color&#39;)</code>:初始加载时，会加载并显示 ‘color’ 分类的图片。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这段代码的目的是创建一个动态的图片库：</p>
+<ul>
+<li><p>支持根据不同分类（比如照片、海报等）展示图片。</p>
+</li>
+<li><p>通过图像查看器支持查看图片，并有缩放、拖拽等功能。</p>
+</li>
+<li><p>通过滚动条实现导航栏的粘性定位，使得导航栏始终显示在页面顶部。</p>
+</li>
+<li><p><code>handleZoomOut()</code>:缩小图片。</p>
+</li>
+<li><p><code>handleCategoryClick(event)</code>:分类点击事件的处理函数。它会获取分类的名称并调用<code>switchCategory</code>切换分类。</p>
+</li>
+</ul>
+<h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 添加时间戳防止缓存
+    const timestamp = new Date().getTime();
+    const cacheBusterUrl =
+      url + (url.includes("?") ? "&" : "?") + "t=" + timestamp;
+</code></pre></details>
+
+<p>这段代码的作用是通过在图片的 URL 中添加一个时间戳，来防止图片被缓存，从而确保每次请求时都能加载最新的图片。</p>
+<p>1.<code>const timestamp = new Date().getTime();</code><br>这一行获取当前的时间戳（单位是毫秒）。new Date().getTime() 会返回自 1970 年 1 月 1 日以来的毫秒数。每次执行时，它的值都会不同。<br>时间戳通常用来生成唯一的值，可以防止浏览器缓存问题。 2. <code>const cacheBusterUrl = url + (url.includes(&quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;) + &quot;t=&quot; + timestamp;</code><br>这一行的作用是将生成的时间戳添加到图片的<code>URL</code>上。<br>解释：</p>
+<ul>
+<li><code>url.includes(&quot;?&quot;)</code>: 检查原始<code>URL</code>中是否已经包含查询参数（即<code>URL</code>是否已有<code>?</code>）。例如，如果<code>URL</code>是 <a target="_blank" rel="noopener" href="http://example.com/image.jpg%EF%BC%8C%E9%82%A3%E4%B9%88%60url.includes(%22?%22)%60">http://example.com/image.jpg，那么`url.includes(&quot;?&quot;)`</a> 返回 false；如果是 <a target="_blank" rel="noopener" href="http://example.com/image.jpg?t=12345%EF%BC%8C%E5%88%99%E8%BF%94%E5%9B%9E">http://example.com/image.jpg?t=12345，则返回</a> true。</li>
+<li><code>(url.includes(&quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;)</code>: 这是一个条件表达式（也叫三元运算符）。如果<code>URL</code>已经包含查询参数（即<code>URL</code>中有 ?），那么它会添加一个<code>&amp;</code>，表示多个参数之间的连接符。如果<code>URL</code>没有查询参数，则会添加一个<code>?</code>，表示开始添加查询参数。</li>
+<li><code>&quot;t=&quot; + timestamp</code>: 这是将时间戳作为查询参数添加到 URL 中，参数名为 t，值为当前的时间戳。例如，如果时间戳是 1615462800000，那么这个部分会变成 t&#x3D;1615462800000。</li>
+</ul>
+<ol start="3">
+<li>总结<br>这段代码通过将一个时间戳（t&#x3D;时间戳）作为查询参数添加到 URL 中，确保每次请求的 URL 都是唯一的，即使是相同的图片 URL。这样做的目的是强制浏览器重新加载图片，而不是从缓存中读取。<br>例如，假设原始的图片 URL 是 <a target="_blank" rel="noopener" href="http://example.com/image.jpg%EF%BC%8C%E9%82%A3%E4%B9%88%E6%B7%BB%E5%8A%A0%E6%97%B6%E9%97%B4%E6%88%B3%E5%90%8E%EF%BC%8CURL">http://example.com/image.jpg，那么添加时间戳后，URL</a> 可能会变成 <a target="_blank" rel="noopener" href="http://example.com/image.jpg?t=1615462800000%E3%80%82%E6%AF%8F%E6%AC%A1%E5%8A%A0%E8%BD%BD%E6%97%B6%EF%BC%8C%E6%97%B6%E9%97%B4%E6%88%B3%E9%83%BD%E4%BC%9A%E4%B8%8D%E5%90%8C%EF%BC%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BC%9A%E8%AE%A4%E4%B8%BA%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E8%AF%B7%E6%B1%82%EF%BC%8C%E4%BB%8E%E8%80%8C%E7%BB%95%E8%BF%87%E7%BC%93%E5%AD%98%E5%8A%A0%E8%BD%BD%E6%9C%80%E6%96%B0%E7%9A%84%E5%9B%BE%E7%89%87%E3%80%82">http://example.com/image.jpg?t=1615462800000。每次加载时，时间戳都会不同，浏览器会认为这是一个新的请求，从而绕过缓存加载最新的图片。</a></li>
+</ol>
+<h2 id="單張圖片顯示"><a href="#單張圖片顯示" class="headerlink" title="單張圖片顯示"></a>單張圖片顯示</h2><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 显示单张图片的函数
+async function displaySingleImage(url, index) &#123;
+  return new Promise((resolve) => &#123;
+    //先放一个“loading 卡片”
+    const cardHTML = `
+            <div class="img_card loading" data-index="$&#123;index&#125;">
+                <div class="loading-spinner"></div>
+            </div>
+        `;
+
+<pre><code>if (index === 0) &#123;
+  gallery.innerHTML = cardHTML;
+&#125; else &#123;
+  gallery.insertAdjacentHTML(&quot;beforeend&quot;, cardHTML);
+&#125;
+
+const card = gallery.querySelector(`.img_card[data-index=&quot;$&#123;index&#125;&quot;]`);
+//card：准备等图片加载成功后替换内部内容
+
+//实际用于加载图片——这种方法不会立刻把图片插入 DOM，而是先测试图片能不能加载成功
+const img = new Image();
+
+img.onload = () =&gt; &#123;
+  const altText = `$&#123;imageCategories[currentCategory].name&#125;_$&#123;index + 1&#125;`;
+  card.innerHTML = `&lt;img class=&quot;img_item&quot; src=&quot;$&#123;url&#125;&quot; alt=&quot;$&#123;altText&#125;&quot;&gt;`;
+  card.classList.remove(&quot;loading&quot;);
+  card.classList.add(&quot;loaded&quot;);
+  //loading → loaded,控制加载动画停止、图片淡入效果等。
+  resolve(); //告诉外层：“这张图片已经处理完（成功）！”
+&#125;;
+
+img.onerror = () =&gt; &#123;
+  card.innerHTML = &#39;&lt;div class=&quot;error-message&quot;&gt;加载失败&lt;/div&gt;&#39;;
+  card.classList.remove(&quot;loading&quot;);
+  resolve();
+  //注意：失败也会 resolve(),因为外层只需要知道这张“处理完了”，继续下一张即可。
+&#125;;
+
+img.src = url; //触发加载
+</code></pre>
+<p>});<br>}<br></code></pre></details></p>
+<h3 id="代码的优点（重要！）"><a href="#代码的优点（重要！）" class="headerlink" title="代码的优点（重要！）"></a>代码的优点（重要！）</h3><p><strong>优点 1：加载前先显示“loading 卡片”</strong><br>让页面不会出现突然闪出的元素，而是：</p>
+<ul>
+<li>先看到骨架屏（loading 占位）</li>
+<li>然后图片替换进去<br>👉 这是现代网页的主流设计流程。</li>
+</ul>
+<p><strong>优点 2：图片是“预加载”，确保成功后才插入 DOM</strong></p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+const img = new Image();
+img.onload = ...
+img.onerror = ...
+img.src = url;
+
+<p></code></pre></details></p>
+<p>这么做的目的：</p>
+<ul>
+<li>不让页面提前出现破图图标</li>
+<li>先用 Image 对象“测试能否加载成功”</li>
+<li>成功才放进页面 → 用户体验更好</li>
+</ul>
+<p><strong>优点 3：Promise 让流程可控（外层可以 await）</strong><br><strong>优点 4：成功和失败都 resolve，不阻塞流程</strong><br>失败时也 resolve：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+img.onerror = () => &#123; resolve(); &#125;
+
+<p></code></pre></details></p>
+<p>这样外层循环不会被卡住，可以继续检测下一张图片。</p>
+<p>思考題：为什么不用<code>&lt;img src=&quot;xxx&quot; onload=&quot;...&quot;&gt;</code>直接插入 DOM？</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+<img src="xxx" onload="loaded()" onerror="error()">
+
+<p></code></pre></details></p>
+<p>直接這樣會產生幾個問題：</p>
+<ul>
+<li>问题 1：浏览器会先显示破图图标</li>
+<li>问题 2：你无法阻止 DOM 先绘制后加载<br>浏览器总是：<ul>
+<li>放进 DOM</li>
+<li>再去加载图片<br>你无法“先测试、成功再插入”。</li>
+</ul>
+</li>
+<li>问题 3：处理 loading &#x2F; skeleton 很困难<br>而 new Image() 就可以：<ul>
+<li>不放进 DOM</li>
+<li>静默测试成功</li>
+<li>成功了再插入页面</li>
+</ul>
+</li>
+</ul>
+<h3 id="總結：displaySingleImage-的-4-大关键理解"><a href="#總結：displaySingleImage-的-4-大关键理解" class="headerlink" title="總結：displaySingleImage 的 4 大关键理解"></a>總結：displaySingleImage 的 4 大关键理解</h3><p>1.为什么代码这样写？（优点）</p>
+<p>✔ 提前预加载、成功后再插入 DOM</p>
+<p>➡️ 避免破图、避免布局跳动（layout shift）、避免闪烁</p>
+<p>✔ loading skeleton 改善用户体验<br>✔ 用 Promise 控制流程（外层可 await）</p>
+<p>➡️ 让图片按顺序显示，而不是乱序加载</p>
+<p>✔ 成功&#x2F;失败都 resolve，流程不会卡住</p>
+<p>➡️ 整个图片队列能继续往下执行 2.代码的缺点（可改进点）<br>❌ 逻辑耦合：加载逻辑 + UI 操作混在一起</p>
+<p>→ 难扩展、难维护</p>
+<p>❌ 频繁使用 innerHTML</p>
+<p>→ 性能差、会移除事件绑定、重新解析 DOM</p>
+<p>❌ 错误处理太简单</p>
+<p>→ 只写“加载失败”，却没有记录 url 或 index</p>
+<p>❌ Promise 写法较老，可以升级成 async&#x2F;await</p>
+<p>→ 更清晰的结构、可拆分函数</p>
+<h3 id="圖解記憶"><a href="#圖解記憶" class="headerlink" title="圖解記憶"></a>圖解記憶</h3><p>🟦 1. detectAndDisplayImages(category)<br>程序主控制流程</p>
+<details><summary>点击这里查看代码解析</summary><pre><code>
+🟦 Step 1：打印“开始检测...”
+      ↓
+🟦 Step 2：初始化变量
+      • currentNumber = 1
+      • consecutiveFailures = 0
+      • displayedCount = 0
+      ↓
+🟦 Step 3：清空画廊 resetGalleryState()
+      ↓
+🟦 Step 4：开始循环（失败次数 < 10）
+
+<pre><code>  ┌───────────────────────────────────┐
+  │  每一轮循环执行以下步骤：          │
+  └───────────────────────────────────┘
+
+  ↓
+</code></pre>
+<p>🟦 Step 5：检查分类是否被用户切换<br>↓<br>🟦 Step 6：尝试取得图片 URL<br>→ 调用 getImageURL(currentNumber, category)<br>↓<br>🟩 Step 7（若 URL 存在）：<br>• 再次确认分类未切换<br>• 调用 displaySingleImage(url, displayedCount)<br>• displayedCount++<br>• consecutiveFailures &#x3D; 0<br>↓<br>🟧 Step 8（若 URL 不存在）：<br>• consecutiveFailures++<br>• 若失败连续 10 次 → 停止搜图<br>↓<br>🟦 Step 9：currentNumber++（下一张）<br>↓<br>🟦 Step 10：等待 30ms（避免请求过密）</p>
+<pre><code>  ↺ 回到 Step 5 继续循环
+</code></pre>
+<p></code></pre></details></p>
+<p>🟪 2. getImageURL(number, category)<br>尝试寻找某张图片是否存在（尝试 jpg&#x2F;jpeg&#x2F;png&#x2F;gif）</p>
+<details><summary>点击这里查看代码解析</summary><pre><code>
+🟪 Step 1：取得该分类的 baseUrl
+      ↓
+🟪 Step 2：若分类配置不存在 → return null
+      ↓
+🟪 Step 3：对每种图片格式执行循环
+      • jpg → jpeg → png → gif
+      ↓
+🟦 Step 4：构建测试 URL
+      如：Photo_5.jpg
+      ↓
+🟪 Step 5：检查图片是否存在
+      → 调用 checkImageExists(url, category)
+      ↓
+🟩 Step 6（存在）：
+      return url
+      ↓
+🟧 Step 7（不存在）：
+      • 尝试下一种格式
+      ↓
+🟥 Step 8（所有格式都失败）：
+      return null
+
+<p></code></pre></details></p>
+<p>🟨 3. checkImageExists(url, category)</p>
+<p>隐式预加载图片，不插入 DOM，用来“测试是否存在”</p>
+<details><summary>点击这里查看代码解析</summary><pre><code>
+🟨 Step 1：创建 new Promise
+      ↓
+🟨 Step 2：new Image()，不放进 DOM
+      ↓
+🟩 Step 3：onload → resolve(true)
+      ↓
+🟧 Step 4：onerror → resolve(false)
+      ↓
+🟨 Step 5：img.src = url（触发加载）
+
+<p></code></pre></details></p>
+<p>🟦 4. displaySingleImage(url, index)</p>
+<p>负责画廊中单个图片卡片的显示</p>
+<details><summary>点击这里查看代码解析</summary><pre><code>
+🟦 Step 1：在画廊插入“loading 卡片”
+      ↓
+🟦 Step 2：创建 new Image() 进行预加载
+      ↓
+
+<p>🟩 Step 3（成功 onload）：<br>• 替换 loading → 显示 <img><br>• 添加 class “loaded”<br>• resolve()</p>
+<pre><code>  ↓
+</code></pre>
+<p>🟧 Step 4（失败 onerror）：<br>• 显示“加载失败”<br>• resolve()（继续下一张）</p>
+<pre><code>  ↓
+</code></pre>
+<p>🟦 Step 5：结束该图片的处理</p>
+<p></code></pre></details></p>
+<p>🎉 整体流程（最简版总览）</p>
+<details><summary>点击这里查看代码解析</summary><pre><code>
+用户选择分类
+      ↓
+detectAndDisplayImages()
+      ↓
+尝试从编号 1 开始找图
+      ↓
+getImageURL() 试四种格式
+      ↓
+checkImageExists() 判断存在性
+      ↓
+存在 → displaySingleImage()
+不存在 → 失败计数++
+      ↓
+继续下一张
+      ↓
+失败 10 次后停止
+
+<p></code></pre></details></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+</code></pre></details>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+</code></pre></details>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
                 
             </div>
             <hr/>
@@ -507,7 +843,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -584,18 +924,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2025/11/22/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+                <a href="/2025/11/23/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9B%BE%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8%E9%83%A8%E5%88%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="前端学习笔记（一）">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分">
                         
-                        <span class="card-title">前端学习笔记（一）</span>
+                        <span class="card-title">前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -605,9 +944,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-11-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-11-23
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -616,7 +955,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -631,9 +977,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="图片展示页面制作笔记（一）">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="前端学习笔记（二）图片展示页面制作笔记（一）">
                         
-                        <span class="card-title">图片展示页面制作笔记（一）</span>
+                        <span class="card-title">前端学习笔记（二）图片展示页面制作笔记（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -890,7 +1236,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">100.9k</span>
+                        class="white-color">123.1k</span>
             
             
             

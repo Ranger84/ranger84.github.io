@@ -1,0 +1,1998 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分, 眠らない25時">
+    <meta name="description" content="前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分点击这里查看代码解析
+class ImageViewer &amp;#123;
+    constructor() &amp;#123;
+        this.currentIndex = 0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分 | 眠らない25時</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眠らない25時</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>light-novels</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Contact</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>Friends</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眠らない25時</div>
+        <div class="logo-desc">
+            
+            其实只是杂物间罢了
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>light-novels</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			Friends
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2025-11-23
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2025-11-25
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    5.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    22 Min
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分"><a href="#前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分" class="headerlink" title="前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分"></a>前端学习笔记（三）图片展示页面制作笔记（二）：图片查看器部分</h1><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+class ImageViewer &#123;
+    constructor() &#123;
+        this.currentIndex = 0;
+        this.images = [];
+        this.init();
+    &#125;
+
+<pre><code>init() &#123;
+    this.createOverlay();
+    this.bindEvents();
+&#125;
+
+createOverlay() &#123;
+    const overlayHTML = `
+        &lt;div class=&quot;image-overlay&quot; id=&quot;imageOverlay&quot;&gt;
+            &lt;button class=&quot;close-btn&quot;&gt;&amp;times;&lt;/button&gt;
+            &lt;button class=&quot;nav-btn prev-btn&quot;&gt;&amp;lt;&lt;/button&gt;
+            &lt;button class=&quot;nav-btn next-btn&quot;&gt;&amp;gt;&lt;/button&gt;
+            &lt;div class=&quot;loading&quot;&gt;加载中...&lt;/div&gt;
+            &lt;img class=&quot;zoomed-image&quot; id=&quot;zoomedImage&quot; src=&quot;&quot; alt=&quot;&quot;&gt;
+            &lt;div class=&quot;image-info&quot; id=&quot;imageInfo&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    `;
+    document.body.insertAdjacentHTML(&#39;beforeend&#39;, overlayHTML);
+
+    this.overlay = document.getElementById(&#39;imageOverlay&#39;);
+    this.zoomedImage = document.getElementById(&#39;zoomedImage&#39;);
+    this.imageInfo = document.getElementById(&#39;imageInfo&#39;);
+    this.closeBtn = document.querySelector(&#39;.close-btn&#39;);
+    this.prevBtn = document.querySelector(&#39;.prev-btn&#39;);
+    this.nextBtn = document.querySelector(&#39;.next-btn&#39;);
+    this.loading = document.querySelector(&#39;.loading&#39;);
+&#125;
+
+bindEvents() &#123;
+    // 关闭按钮
+    this.closeBtn.addEventListener(&#39;click&#39;, () =&gt; this.close());
+
+    // 导航按钮
+    this.prevBtn.addEventListener(&#39;click&#39;, () =&gt; this.showPrev());
+    this.nextBtn.addEventListener(&#39;click&#39;, () =&gt; this.showNext());
+
+    // ESC键关闭
+    document.addEventListener(&#39;keydown&#39;, (e) =&gt; &#123;
+        if (e.key === &#39;Escape&#39;) this.close();
+        if (e.key === &#39;ArrowLeft&#39;) this.showPrev();
+        if (e.key === &#39;ArrowRight&#39;) this.showNext();
+    &#125;);
+
+    // 点击背景关闭
+    this.overlay.addEventListener(&#39;click&#39;, (e) =&gt; &#123;
+        if (e.target === this.overlay) this.close();
+    &#125;);
+&#125;
+
+open(index, images) &#123;
+    this.currentIndex = index;
+    this.images = images;
+    this.showImage();
+    this.overlay.classList.add(&#39;active&#39;);
+    document.body.style.overflow = &#39;hidden&#39;; // 防止背景滚动
+&#125;
+
+close() &#123;
+    this.overlay.classList.remove(&#39;active&#39;);
+    document.body.style.overflow = &#39;&#39;; // 恢复滚动
+    setTimeout(() =&gt; &#123;
+        this.zoomedImage.src = &#39;&#39;;
+    &#125;, 300);
+&#125;
+
+showImage() &#123;
+    if (this.images.length === 0) return;
+
+    const imageUrl = this.images[this.currentIndex];
+    this.loading.style.display = &#39;block&#39;;
+    this.zoomedImage.style.display = &#39;none&#39;;
+
+    const img = new Image();
+    img.onload = () =&gt; &#123;
+        this.zoomedImage.src = imageUrl;
+        this.zoomedImage.alt = `放大图片 $&#123;this.currentIndex + 1&#125;`;
+        this.zoomedImage.style.display = &#39;block&#39;;
+        this.loading.style.display = &#39;none&#39;;
+        this.updateInfo();
+    &#125;;
+    img.onerror = () =&gt; &#123;
+        this.loading.textContent = &#39;图片加载失败&#39;;
+    &#125;;
+    img.src = imageUrl;
+&#125;
+
+showPrev() &#123;
+    if (this.images.length === 0) return;
+    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    this.showImage();
+&#125;
+
+showNext() &#123;
+    if (this.images.length === 0) return;
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    this.showImage();
+&#125;
+
+updateInfo() &#123;
+    this.imageInfo.textContent = `$&#123;this.currentIndex + 1&#125; / $&#123;this.images.length&#125;`;
+&#125;
+</code></pre>
+<p>}<br></code></pre></details></p>
+<h2 id="1-构造函数-Constructor"><a href="#1-构造函数-Constructor" class="headerlink" title="1. 构造函数 (Constructor)"></a>1. 构造函数 (Constructor)</h2><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+constructor() &#123;
+    this.currentIndex = 0;    // 当前显示的图片索引
+    this.images = [];         // 存储所有图片URL的数组
+    this.init();              // 立即初始化
+&#125;
+</code></pre></details>
+
+<h2 id="this-在构造函数中的作用"><a href="#this-在构造函数中的作用" class="headerlink" title="this 在构造函数中的作用"></a>this 在构造函数中的作用</h2><p><code>this</code>在构造函数中用于创建实例，并将实例的属性和方法绑定到实例上。<br><code>this</code>在这里用于创建和访问实例的属性和方法：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+constructor() &#123;
+    this.currentIndex = 0;    // 为这个实例创建 currentIndex 属性
+    this.images = [];         // 为这个实例创建 images 属性  
+    this.init();              // 调用这个实例的 init 方法
+&#125;
+</code></pre></details>
+
+<p>如果不使用<code>this</code>会怎样？<br>问题 1：所有实例共享相同数据</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// ❌ 错误的写法 - 没有 this
+let currentIndex = 0;  // 全局变量
+let images = [];       // 全局变量
+
+<p>constructor() &#123;<br>currentIndex &#x3D; 0; &#x2F;&#x2F; 修改的是全局变量！<br>images &#x3D; []; &#x2F;&#x2F; 所有实例共享同一个数组！<br>init(); &#x2F;&#x2F; 调用的是全局函数！<br>&#125;<br></code></pre></details></p>
+<p>不能省略 this，因为：</p>
+<ul>
+<li><p>没有 this，所有实例会共享相同数据，互相干扰</p>
+</li>
+<li><p>类的基本机制就是通过 this 来区分类和实例</p>
+</li>
+<li><p>这是面向对象编程的核心概念</p>
+</li>
+</ul>
+<p><code>this</code>让每个<code>ImageViewer</code>实例都成为独立的、自包含的图片查看器！</p>
+<h3 id="this-丢失问题"><a href="#this-丢失问题" class="headerlink" title="this 丢失问题"></a>this 丢失问题</h3><p>函数调用有时候会使得 this 指向改变。</p>
+<details><summary>点击这里查看代码示例</summary><pre><code class="language-javascript">
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Function bind()</h1>
+
+<p>This example will try to display a person name after 3 seconds.</p>
+
+<p id="demo"></p>
+
+<script>
+const person = &#123;
+  firstName:"John",
+  lastName: "Doe",
+  display: function() &#123;
+    let x = document.getElementById("demo");
+    x.innerHTML = this.firstName + " " + this.lastName;
+  &#125;
+&#125;
+
+setTimeout(person.display, 3000);
+</script>
+
+</body>
+</html>
+</code></pre></details>
+
+<p>上述代码会返回 undefined</p>
+<p><strong>问题根源：this 的丢失</strong><br>解析：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">const person = &#123;
+  firstName: "John",
+  lastName: "Doe",
+  display: function() &#123;
+    let x = document.getElementById("demo");
+    x.innerHTML = this.firstName + " " + this.lastName;
+    // 这里的 this 期望指向 person 对象
+  &#125;
+&#125;
+
+<p>&#x2F;&#x2F; 问题在这里：<br>setTimeout(person.display, 3000);<br>&#x2F;&#x2F; 相当于：setTimeout(function() &#123; … &#125;, 3000)<br>&#x2F;&#x2F; this 指向改变了！<br></code></pre></details></p>
+<h4 id="执行过程分解"><a href="#执行过程分解" class="headerlink" title="执行过程分解"></a>执行过程分解</h4><p>步骤 1：定义时</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// person.display 中的 this 正确指向 person
+person.display(); // 正常显示 "John Doe"
+</code></pre></details>
+
+<p>步骤 2：传递给 setTimeout 时</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 实际上发生的是：
+const tempFunction = person.display; // 只是复制函数，不复制 this 绑定
+setTimeout(tempFunction, 3000);
+
+<p>&#x2F;&#x2F; 3 秒后执行时：<br>tempFunction(); &#x2F;&#x2F; 相当于普通函数调用，this 指向 window&#x2F;global<br></code></pre></details></p>
+<p><strong>this 指向的变化</strong><br>不同调用方式的<code>this</code>指向：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 方法调用：this 指向对象
+person.display(); // this = person ✅
+
+<p>&#x2F;&#x2F; 函数调用：this 指向 window&#x2F;global（严格模式下 undefined）<br>const func &#x3D; person.display;<br>func(); &#x2F;&#x2F; this &#x3D; window ❌</p>
+<p>&#x2F;&#x2F; setTimeout 回调：this 指向 window&#x2F;global<br>setTimeout(person.display, 1000); &#x2F;&#x2F; this &#x3D; window ❌<br></code></pre></details></p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>方案 1：使用 bind()（推荐）</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 正确写法：
+setTimeout(person.display.bind(person), 3000);
+// bind(person) 确保函数中的 this 始终指向 person
+</code></pre></details>
+
+<p>方案 2：使用箭头函数</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+setTimeout(() => &#123;
+  person.display(); // 箭头函数不改变 this
+&#125;, 3000);
+</code></pre></details>
+
+<p>方案 3：包装函数</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+setTimeout(function() &#123;
+  person.display(); // 直接调用方法
+&#125;, 3000);
+</code></pre></details>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p><strong>指定类属性的时候，必须要使用 this。在类中定义和访问实例属性时，必须使用 this。这是 JavaScript 类的核心规则。</strong></p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+</code></pre></details>
+
+<h2 id="init-方法"><a href="#init-方法" class="headerlink" title="init() 方法"></a>init() 方法</h2><p>使用<code>init()</code>方法可以将复杂的初始化逻辑交给<code>init()</code>方法，前面只做最基本的属性初始化（职责分离）。</p>
+<p>注意：<code>init()</code>是一个方法</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+class ImageViewer &#123;
+    constructor() &#123;
+        this.currentIndex = 0;
+        this.images = [];
+        this.init();              // 这里调用的是方法
+    &#125;
+    
+<pre><code>init() &#123;                      // 这是一个方法定义
+    this.createOverlay();
+    this.bindEvents();
+&#125;
+</code></pre>
+<p>}<br></code></pre></details></p>
+<p>在图片查看器代码中，具体来说就是：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+class ImageViewer &#123;
+    constructor() &#123;
+        // 调用 init() 方法
+        this.init();
+    &#125;
+    
+<pre><code>init() &#123;
+    // 调用 createOverlay() 方法
+    this.createOverlay();
+    // 调用 bindEvents() 方法
+    this.bindEvents();
+&#125;
+
+createOverlay() &#123;
+    // 这是一个方法
+&#125;
+
+bindEvents() &#123;
+    // 这是一个方法
+&#125;
+
+open() &#123;
+    // 这是一个方法
+&#125;
+
+close() &#123;
+    // 这是一个方法
+&#125;
+</code></pre>
+<p>}<br></code></pre></details></p>
+<h3 id="方法和函数的区别"><a href="#方法和函数的区别" class="headerlink" title="方法和函数的区别"></a>方法和函数的区别</h3><p>方法 vs 函数<br>方法是定义在类中的函数：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+class Example &#123;
+    // 这些都是方法：
+    constructor() &#123; &#125;          // 构造方法
+    init() &#123; &#125;                 // 实例方法
+    someMethod() &#123; &#125;           // 实例方法
+    
+<pre><code>static staticMethod() &#123; &#125;  // 静态方法
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F; 这是普通函数：<br>function regularFunction() { }<br></code></pre></details></p>
+<p>为什么说上面 init()是一个方法而不是一个函数？</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+class ImageViewer &#123;
+    init() &#123;
+        // 这是一个方法，因为：
+        // 1. 定义在类中
+        // 2. 可以通过 this 访问实例属性
+        // 3. 存储在类的 prototype 上
+        console.log(this.currentIndex); // 可以访问实例属性
+    &#125;
+&#125;
+
+<p>&#x2F;&#x2F; 对比普通函数：<br>function standaloneInit() &#123;<br>&#x2F;&#x2F; 这是一个函数，因为：<br>&#x2F;&#x2F; 1. 独立定义<br>&#x2F;&#x2F; 2. 没有关联的实例<br>&#x2F;&#x2F; console.log(this.currentIndex); &#x2F;&#x2F; 这没有意义<br>&#125;<br></code></pre></details></p>
+<h2 id="自定义方法"><a href="#自定义方法" class="headerlink" title="自定义方法"></a>自定义方法</h2><p>createOverlay()、bindEvents()、open()、close()、showImage()、showPrev()、showNext()、updateInfo()都是我们自定义的方法</p>
+<h3 id="完整的数据流向"><a href="#完整的数据流向" class="headerlink" title="完整的数据流向"></a>完整的数据流向</h3><p>步骤 1：创建 HTML 并插入</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 动态创建查看器界面
+const overlayHTML = `...`; // 生成HTML字符串
+document.body.insertAdjacentHTML('beforeend', overlayHTML); // 插入页面
+</code></pre></details>
+
+<p>步骤 2：缓存 DOM 引用</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 将创建的DOM元素保存到实例属性中
+this.overlay = document.getElementById('imageOverlay');
+this.zoomedImage = document.getElementById('zoomedImage');
+// ...
+</code></pre></details>
+
+<p>步骤 3：后续使用</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 在其他方法中可以直接使用这些引用
+open() &#123;
+    this.overlay.classList.add('active'); // 使用缓存的引用
+&#125;
+
+<p>close() &#123;<br>this.zoomedImage.src &#x3D; ‘’; &#x2F;&#x2F; 使用缓存的引用<br>&#125;<br></code></pre></details></p>
+<p><strong>为什么要缓存 DOM 引用？</strong><br>性能优化：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// ❌ 不好的做法：每次都查询DOM
+showImage() &#123;
+    document.getElementById('zoomedImage').src = url; // 每次都要查询
+&#125;
+
+<p>&#x2F;&#x2F; ✅ 好的做法：缓存引用<br>createOverlay() &#123;<br>this.zoomedImage &#x3D; document.getElementById(‘zoomedImage’); &#x2F;&#x2F; 只查询一次<br>&#125;<br>showImage() &#123;<br>this.zoomedImage.src &#x3D; url; &#x2F;&#x2F; 直接使用缓存引用<br>&#125;<br></code></pre></details></p>
+<h2 id="键盘事件监听代码详解"><a href="#键盘事件监听代码详解" class="headerlink" title="键盘事件监听代码详解"></a>键盘事件监听代码详解</h2><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+document.addEventListener('keydown', (e) => &#123;
+    // 监听整个文档的键盘按下事件
+    if (e.key === 'Escape') this.close();       // ESC键：关闭查看器
+    if (e.key === 'ArrowLeft') this.showPrev(); // 左箭头：上一张图片
+    if (e.key === 'ArrowRight') this.showNext();// 右箭头：下一张图片
+&#125;);
+</code></pre></details>
+
+<h3 id="事件监听器设置"><a href="#事件监听器设置" class="headerlink" title="事件监听器设置"></a>事件监听器设置</h3><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 监听整个文档的键盘按下事件
+document.addEventListener('keydown', (e) => &#123;
+    // 当任何键被按下时，这个函数会被调用
+&#125;);
+</code></pre></details>
+
+<p>为什么用 document 而不是具体元素？</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// ✅ 用 document：在任何地方按键盘都有效
+document.addEventListener('keydown', handler);
+
+<p>&#x2F;&#x2F; ❌ 用具体元素：只有在该元素获得焦点时有效<br>this.overlay.addEventListener(‘keydown’, handler);<br></code></pre></details></p>
+<h3 id="事件对象e和按键检测"><a href="#事件对象e和按键检测" class="headerlink" title="事件对象e和按键检测"></a>事件对象<code>e</code>和按键检测</h3><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+document.addEventListener('keydown', (e) => &#123;
+    console.log(e.key);      // 按键名称："Escape", "ArrowLeft" 等
+    console.log(e.code);     // 物理按键代码："Escape", "ArrowLeft" 等
+    console.log(e.keyCode);  // 传统键码（已废弃）：27, 37, 39 等
+&#125;);
+</code></pre></details>
+
+<p>按键检测的三种方式：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 现代方式（推荐）：
+if (e.key === 'Escape') &#123; &#125;      // 按键名称
+
+<p>&#x2F;&#x2F; 传统方式（不推荐）：<br>if (e.keyCode &#x3D;&#x3D;&#x3D; 27) &#123; &#125; &#x2F;&#x2F; 键码（已废弃）</p>
+<p>&#x2F;&#x2F; 物理按键方式：<br>if (e.code &#x3D;&#x3D;&#x3D; ‘Escape’) &#123; &#125; &#x2F;&#x2F; 物理按键位置</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+</code></pre></details>
+</code></pre></details>
+
+<p>箭头函数的作用:为什么用箭头函数？</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// ✅ 箭头函数：this 指向 ImageViewer 实例
+document.addEventListener('keydown', (e) => &#123;
+    this.close();     // this 正确指向 ImageViewer 实例
+&#125;);
+
+<p>&#x2F;&#x2F; ❌ 普通函数：this 指向 document<br>document.addEventListener(‘keydown’, function(e) &#123;<br>this.close(); &#x2F;&#x2F; this 指向 document，错误！<br>&#125;);<br></code></pre></details></p>
+<h3 id="target-的用法"><a href="#target-的用法" class="headerlink" title="target 的用法"></a>target 的用法</h3><p>思考：e.target 和 this.overlay 是否可以比较？可以！</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+this.overlay.addEventListener('click', (e) => &#123;
+    // 这个条件的意思是：
+    // "如果被点击的元素(e.target)就是遮罩层本身(this.overlay)"
+    if (e.target === this.overlay) &#123;
+        // 说明用户点击的是空白背景，不是按钮/图片等子元素
+        this.close();
+    &#125;
+&#125;);
+</code></pre></details>
+
+<p>为什么可以比较？</p>
+<ol>
+<li>都是 DOM 元素引用<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// this.overlay 存储的是 DOM 元素的引用
+this.overlay = document.getElementById('imageOverlay');
+// 现在 this.overlay 指向具体的 DOM 元素对象</li>
+</ol>
+<p>&#x2F;&#x2F; e.target 也是 DOM 元素的引用<br>&#x2F;&#x2F; 当事件发生时，e.target 指向被点击的 DOM 元素<br></code></pre></details></p>
+<ol start="2">
+<li>JavaScript 的对象比较机制<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">const element1 = document.getElementById('imageOverlay');
+const element2 = document.getElementById('imageOverlay');</li>
+</ol>
+<p>console.log(element1 &#x3D;&#x3D;&#x3D; element2); &#x2F;&#x2F; true<br>&#x2F;&#x2F; 因为它们引用的是同一个 DOM 对象<br></code></pre></details></p>
+<p>内存中的实际情况</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+内存地址 0x1234: <div class="image-overlay" id="imageOverlay">
+                    <button class="close-btn">×</button>
+                    <img class="zoomed-image">
+                 </div>
+
+<p>this.overlay &#x3D; 指向内存地址 0x1234</p>
+<p>当点击背景时：<br>e.target &#x3D; 指向内存地址 0x1234<br>e.target &#x3D;&#x3D;&#x3D; this.overlay → true</p>
+<p>当点击按钮时：<br>e.target &#x3D; 指向内存地址 0x5678 (<button>)<br>e.target &#x3D;&#x3D;&#x3D; this.overlay → false<br></code></pre></details></p>
+<p>总结</p>
+<ul>
+<li><p><code>·</code>e.target<code>·</code>和<code>·</code>this.overlay<code>·</code>可以比较，因为：</p>
+</li>
+<li><p>都是对象引用：·指向<code>DOM</code>·&#96;元素对象</p>
+</li>
+<li><p>引用相同对象：当点击背景时，它们指向同一个<code>DOM</code>元素</p>
+</li>
+<li><p>JavaScript 特性：对象比较的是引用地址，不是内容</p>
+</li>
+</ul>
+<p>所以<code>e.target === this.overlay</code>是在检查：”被点击的元素是不是就是我们之前保存的那个遮罩层元素本身”。</p>
+<h3 id="e-target"><a href="#e-target" class="headerlink" title="e.target"></a>e.target</h3><p>一个问题:e.target 的返回值是什么？</p>
+<p><strong>引申：<code>console.log()</code>的特殊行为和<code>innerHTML</code>的字符串转换机制。</strong><br>console.log(e.target);在控制台会输出<code>&lt;div class=&quot;image-overlay&quot; id=&quot;imageOverlay&quot;&gt;...&lt;/div&gt;</code><br>innerHTML 输出会显示[object HTMLDivElement]<br><strong>核心原因：不同的转换机制</strong></p>
+<ol>
+<li>console.log() 的智能显示<br>浏览器控制台对 DOM 元素有特殊处理，它会：</li>
+</ol>
+<ul>
+<li><p>识别出这是 DOM 元素对象</p>
+</li>
+<li><p>直接显示该元素的 HTML 结构</p>
+</li>
+<li><p>提供交互式查看（可以展开看属性）</p>
+</li>
+</ul>
+<ol start="2">
+<li>innerHTML 的字符串转换<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+element.innerHTML = e.target;
+</code></pre></details></li>
+</ol>
+<p>innerHTML 会：</p>
+<ul>
+<li><p>调用 e.target.toString() 方法</p>
+</li>
+<li><p>得到标准的对象字符串表示：<code>[object HTMLDivElement]</code></p>
+</li>
+<li><p>将这个字符串作为 HTML 内容插入</p>
+</li>
+</ul>
+<p><strong>总结</strong><br>根本原因：</p>
+<ul>
+<li><p>console.log(e.target) → 浏览器特殊优化，显示可视化 HTML 结构</p>
+</li>
+<li><p>innerHTML &#x3D; e.target → 自动调用<code>toString()</code>，得到 [object HTMLDivElement]</p>
+</li>
+<li><p>设计目的不同：console.log 为调试优化，<code>innerHTML</code>为内容插入设计</p>
+</li>
+</ul>
+<h3 id="打开图片"><a href="#打开图片" class="headerlink" title="打开图片"></a>打开图片</h3><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+open(index, images) &#123;
+        this.currentIndex = index;
+        this.images = images;
+        this.showImage();
+        this.overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // 防止背景滚动
+    &#125;
+</code></pre></details>
+
+<p><code>classList</code>用法：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+element.classList.add('class名')      // 添加类
+element.classList.remove('class名')   // 移除类  
+element.classList.toggle('class名')   // 切换类（有则删，无则加）
+</code></pre></details>
+
+<p><code>classList</code>用来动态添加&#x2F;移除 CSS 类，控制元素显示状态。</p>
+<h3 id="图片点击事件"><a href="#图片点击事件" class="headerlink" title="图片点击事件"></a>图片点击事件</h3><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 修改现有的图片点击事件
+function addImageClickEvents() &#123;
+    const imageCards = document.querySelectorAll('.img_card');
+    const validImageUrls = Array.from(document.querySelectorAll('.img_item'))
+        .map(img => img.src)
+        .filter(src => src && !src.includes('data:')); // 过滤掉占位符图片
+
+<pre><code>imageCards.forEach((card, index) =&gt; &#123;
+    card.style.cursor = &#39;pointer&#39;; // 添加手型光标
+    card.addEventListener(&#39;click&#39;, () =&gt; &#123;
+        imageViewer.open(index, validImageUrls);
+    &#125;);
+&#125;);
+</code></pre>
+<p>}<br></code></pre></details></p>
+<p>注意：<code>document.querySelectorAll</code>返回的是一个<code>NodeList</code>，不是数组，不能直接使用<code>map()</code>方法。<br><code>Array.from()</code>方法可以将 NodeList 转为真正的数组</p>
+<p><code>.map(img =&gt; img.src)</code>和<code>.filter(src =&gt; src &amp;&amp; !src.includes(&#39;data:&#39;))</code>的完整形式：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+const validImageUrls = Array.from(document.querySelectorAll('.img_item'))
+    .map(function(img) &#123;
+        return img.src;
+    &#125;)
+    .filter(function(src) &#123;
+        // 检查URL是否有效：非空且不是data URL
+        return src && !src.includes('data:');
+    &#125;);
+</code></pre></details>
+
+<p>为什么需要添加<code>.filter(src =&gt; src &amp;&amp; !src.includes(&#39;data:&#39;))</code>这一条件？<br>答：为了过滤掉那些不合法的图片 URL，比如空值、占位符图片&#x2F; base64 格式的占位符图片等。<br>执行过程分解</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 1. 获取所有图片URL
+const allImageUrls = Array.from(document.querySelectorAll('.img_item'))
+    .map(img => img.src);
+
+<p>&#x2F;&#x2F; 2. 手动实现 filter 逻辑<br>const validImageUrls &#x3D; [];<br>for (let i &#x3D; 0; i &lt; allImageUrls.length; i++) &#123;<br>const src &#x3D; allImageUrls[i];</p>
+<pre><code>// 这就是 filter 函数内部执行的逻辑
+if (src &amp;&amp; !src.includes(&#39;data:&#39;)) &#123;
+    validImageUrls.push(src);
+&#125;
+</code></pre>
+<p>}<br></code></pre></details></p>
+<h4 id="拓展：什么是-data-URL？"><a href="#拓展：什么是-data-URL？" class="headerlink" title="拓展：什么是 data URL？"></a>拓展：什么是 data URL？</h4><p>Data URL 是一种将文件数据直接嵌入 URL 的格式：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==
+</code></pre></details>
+
+<p><strong>为什么需要过滤掉 data URL？</strong></p>
+<ul>
+<li>确保质量 - 只传递真实的图片文件</li>
+<li>提升体验 - 避免用户查看无意义的占位符</li>
+<li>防止错误 - 避免图片查看器处理不支持的格式</li>
+</ul>
+<h2 id="图片画廊显示的主函数"><a href="#图片画廊显示的主函数" class="headerlink" title="图片画廊显示的主函数"></a>图片画廊显示的主函数</h2><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+async function displayGallery() &#123;
+    try &#123;
+        console.log('Generating image gallery...');
+        const imageToDisplay = await createImageGallery();
+        console.log('生成的HTML:', imageToDisplay);
+        gallery.innerHTML = imageToDisplay;
+        console.log('Image gallery generated successfully.');
+
+<pre><code>    // 添加点击事件
+    addImageClickEvents();
+&#125; catch (error) &#123;
+    console.error(&#39;Error generating image gallery:&#39;, error);
+&#125;
+</code></pre>
+<p>}<br></code></pre></details></p>
+<p>执行流程和步骤大致如下：</p>
+<ol>
+<li><p>异步函数</p>
+</li>
+<li><p>错误处理 catch</p>
+</li>
+<li><p>执行流程日志</p>
+</li>
+<li><p>异步创建画廊内容</p>
+</li>
+<li><p>调试输出</p>
+</li>
+<li><p>更新 DOM 显示</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+gallery.innerHTML = imageToDisplay;
+</code></pre></details>
+</li>
+<li><p>成功日志</p>
+</li>
+<li><p>添加交互功能</p>
+</li>
+<li><p>错误处理<br>完整执行流程:</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript"></li>
+<li><p>开始执行 displayGallery()</p>
+</li>
+<li><p>输出日志：”Generating image gallery…”</p>
+</li>
+<li><p>等待 createImageGallery() 完成（可能检测图片、生成 HTML）</p>
+</li>
+<li><p>获得生成的 HTML 内容</p>
+</li>
+<li><p>输出 HTML 内容到控制台（调试用）</p>
+</li>
+<li><p>将 HTML 插入到画廊容器中</p>
+</li>
+<li><p>输出成功日志</p>
+</li>
+<li><p>为图片添加点击事件</p>
+</li>
+<li><p>如有错误，捕获并输出错误信息<br></code></pre></details></p>
+</li>
+</ol>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+const imageToDisplay = await createImageGallery();
+</code></pre></details>
+    
+<ul>
+<li><p>异步操作：<code>createImageGallery()</code>可能包含图片检测、加载等耗时操作</p>
+</li>
+<li><p>阻塞等待：直到获得生成的 HTML 内容后才继续执行</p>
+</li>
+</ul>
+<h2 id="总体模块划分-思路解读"><a href="#总体模块划分-思路解读" class="headerlink" title="总体模块划分&amp;思路解读"></a>总体模块划分&amp;思路解读</h2><p>这个项目可以清晰地划分为三个核心模块：</p>
+<ol>
+<li><p>图片资源加载器 (Image Loader)</p>
+</li>
+<li><p>画廊渲染器 (Gallery Renderer)</p>
+</li>
+<li><p>图片查看器 (ImageViewer)</p>
+</li>
+</ol>
+<p>它们的依赖关系是：1 → 2 → 3。查看器依赖于渲染器生成的 DOM，渲染器依赖于加载器提供的图片 URL。</p>
+<h3 id="编写顺序与思路详解"><a href="#编写顺序与思路详解" class="headerlink" title="编写顺序与思路详解"></a>编写顺序与思路详解</h3><p>编写顺序基本就是按照模块依赖关系，自底向上进行的。</p>
+<p><strong>第一阶段：搭建基础 - 图片资源加载器</strong><br>目标： 解决“如何可靠地获取到图片地址”这个核心问题。</p>
+<ol>
+<li><p>编写<code>checkImageExists(url)</code>函数：</p>
+<ul>
+<li><p>思路： 这是所有功能的基石。需要一种方法在 JavaScript 中探测一个图片 URL 是否有效。</p>
+</li>
+<li><p>技术选型： 利用<code>Image</code>对象的<code>onload</code>和<code>onerror</code>事件。为了便于使用，将其包装成一个<code>Promise</code>。这样后续可以用<code>async/await</code>以同步的方式写异步代码，更清晰。</p>
+</li>
+<li><p>注意： 这个函数本身不关心图片格式或编号，它只负责测试一个给定的 URL。</p>
+</li>
+</ul>
+</li>
+<li><p>编写<code>getImageURL(number)</code>函数：</p>
+<ul>
+<li><p>思路： 对于第<code>n</code>张图，我们不知道它是什么格式。所以要用上一个函数，按照<code>imageFormats</code>数组的顺序，逐个格式去尝试。</p>
+</li>
+<li><p>技术实现： 在一个循环中，拼接出不同格式的 URL，然后用<code>await checkImageExists(testUrl)</code>等待检测结果。一旦某个格式被证实存在，立即返回该 URL。如果所有格式都不存在，则返回<code>undefined</code>。</p>
+</li>
+</ul>
+</li>
+<li><p>在<code>createImageGallery()</code>函数中进行批量检测：</p>
+<ul>
+<li><p>思路： 我们要检测 26 张图，如果一张一张顺序检测，太慢了（下一张要等上一张出结果后才能开始）。</p>
+</li>
+<li><p>性能优化： 使用<code>Promise.all()</code>。先用一个循环创建 26 个 Promise（每个 Promise 代表对一张图的检测任务），然后让它们<strong>并发执行</strong>。这样网络请求可以同时发出，极大地缩短了总等待时间。</p>
+</li>
+<li><p>结果： <code>imageUrls</code>是一个包含了 26 个 URL（或 undefined）的数组，其顺序与图片编号一一对应。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>至此，我们已经拿到了所有可用图片的数据。<br><strong>第二阶段：构建视图 - 画廊渲染器</strong><br>目标： 将获取到的图片 URL 数据变成用户能看到的图片网格。</p>
+<ol>
+<li><p>在<code>createImageCard(url)</code>中生成 HTML 字符串：</p>
+<ul>
+<li><p>思路： 数据（<code>imageUrls</code>数组）准备好了，现在要生成视图。在非 React&#x2F;Vue 的纯 JS 环境中，最直接的方式是拼接 HTML 字符串。</p>
+</li>
+<li><p>技术实现： 使用<code>array.map()</code>遍历<code>imageUrls</code>，对每个有效的 URL，生成一个<code>.img_card</code>包裹<code>.img_item</code>的 HTML 片段。然后用<code>join(&#39;&#39;)</code>将它们合并成一个巨大的字符串。</p>
+</li>
+<li><p>输出： 一个完整的、代表整个画廊的 HTML 字符串。</p>
+</li>
+</ul>
+</li>
+<li><p>编写<code>displayGallery()</code>函数：</p>
+<ul>
+<li><p>思路： 这是主控函数，负责协调数据和视图。</p>
+</li>
+<li><p>执行流程：<code>await createImageGallery()</code>→ 等待所有图片检测完成并拿到 HTML 字符串 → 将字符串插入到 DOM 容器<code>（gallery.innerHTML = ...）</code>中。</p>
+</li>
+<li><p>错误处理： 用<code>try...catch</code>包裹整个过程，确保万一出错能有日志可查，不会让页面白屏。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>至此，一个静态的图片画廊已经可以正常显示了。<br><strong>第三阶段：增强交互 - 图片查看器</strong><br>目标： 为静态画廊添加“点击放大、切换浏览”的交互功能。</p>
+<ol>
+<li><p>设计<code>ImageViewer</code>类：</p>
+<ul>
+<li><p>为什么用类？ 因为查看器是一个有状态的、功能复杂的独立单元。它需要维护当前索引、图片列表等状态，并包含很多方法。用类可以很好地封装这些状态和行为，比一堆散落的函数和变量要清晰得多。</p>
+</li>
+<li><p>构造器<code>constructor()</code>： 初始化状态（<code>currentIndex</code>,<code>images</code>）并立即调用<code>init()</code></p>
+</li>
+</ul>
+</li>
+<li><p>实现<code>ImageViewer</code>的各个方法（按功能逻辑）：</p>
+<ul>
+<li><p>createOverlay()： 创建查看器所需的 DOM 结构（遮罩层、关闭按钮、导航按钮、图片元素等），并插入到<code>body</code>末尾。同时将常用 DOM 元素的引用保存在类的属性上（如<code>this.overlay</code>, <code>this.zoomedImage</code>），方便后续操作。</p>
+</li>
+<li><p>bindEvents()： 集中绑定所有事件监听器。</p>
+<ul>
+<li><p>关闭按钮 → close()</p>
+</li>
+<li><p>导航按钮 → showPrev() &#x2F; showNext()</p>
+</li>
+<li><p>键盘事件（ESC, 左右箭头）</p>
+</li>
+<li><p>点击遮罩背景关闭。</p>
+</li>
+</ul>
+</li>
+<li><p>open(index, images)： 这是给外部调用的 API。接收一个索引和完整的图片 URL 数组，保存到自身状态，然后调用 showImage() 显示图片，最后将遮罩层设为可见（active）。</p>
+</li>
+<li><p>showImage()： 核心方法。根据<code>currentIndex 从 images</code>中取出 URL，进行预加载。</p>
+<ul>
+<li><p>显示 “加载中…”</p>
+</li>
+<li><p>创建一个新的 Image 对象去加载图片。</p>
+</li>
+<li><p><code>onload</code>成功后，再将 URL 设置给真正显示的 this.zoomedImage，并隐藏加载提示。这个过程保证了用户体验的流畅。</p>
+</li>
+</ul>
+</li>
+<li><p>close(), showPrev(), showNext(), updateInfo()： 这些是相对简单的功能方法，主要工作是更新状态（如 currentIndex）和调用 showImage() 刷新视图。</p>
+</li>
+</ul>
+</li>
+<li><p>将查看器挂接到画廊上：</p>
+<ul>
+<li><p>编写 addImageClickEvents() 函数：</p>
+<ul>
+<li><p>思路： 等画廊渲染完成后，为每个图片卡片绑定点击事件。</p>
+</li>
+<li><p>技术实现： 获取所有 .img_card 元素，遍历它们。为每个卡片添加点击监听，当点击时，调用 imageViewer.open(index, validImageUrls)。</p>
+</li>
+<li><p>关键点： validImageUrls 是从已生成的 DOM 中反向收集的所有有效图片的 src，并过滤掉了可能存在的占位符。这保证了查看器里的图片列表和画廊里显示的完全一致。</p>
+</li>
+</ul>
+</li>
+<li><p>改造 displayGallery()： 在 innerHTML 执行之后，立即调用 addImageClickEvents()，从而为动态生成的图片元素添加上交互能力。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这个编写顺序体现了经典的分层架构和关注点分离思想：</p>
+<ol>
+<li><p>先解决数据问题（图片是否存在？URL 是什么？）。</p>
+</li>
+<li><p>再解决显示问题（如何把数据变成 HTML？）。</p>
+</li>
+<li><p>最后解决交互问题（如何让 HTML 动起来？）。</p>
+</li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">伤心小狗虎虎生威</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ranger84.github.io/2025/11/23/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9B%BE%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8%E9%83%A8%E5%88%86/">https://ranger84.github.io/2025/11/23/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9B%BE%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8%E9%83%A8%E5%88%86/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">伤心小狗虎虎生威</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2025/11/24/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91%E3%80%90%E3%81%BF%E3%81%9A%E3%81%88%E3%81%AA%E3%80%91%E3%81%A8%E3%82%82%E3%81%A0%E3%81%A1%E3%81%AE%E6%8A%9C%E3%81%91%E7%A9%B4/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="【转载】【みずえな】ともだちの抜け穴">
+                        
+                        <span class="card-title">【转载】【みずえな】ともだちの抜け穴</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-11-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            伤心小狗虎虎生威
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E3%81%BF%E3%81%9A%E3%81%88%E3%81%AA/">
+                        <span class="chip bg-color">みずえな</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/11/22/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库">
+                        
+                        <span class="card-title">前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-11-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            伤心小狗虎虎生威
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: 眠らない25時<br />'
+            + 'Author: 伤心小狗虎虎生威<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="12778952489"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2024-2025</span>
+            
+            <a href="/about" target="_blank">伤心小狗虎虎生威</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
+                        class="white-color">123.1k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2024";
+                        var startMonth = "10";
+                        var startDate = "26";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'en';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+        data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+    
+
+        
+            <a href="mailto:lancelot84@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+                data-position="top" data-delay="50">
+                <i class="fas fa-envelope-open"></i>
+            </a>
+            
+
+                
+                    <a href="https://www.bilibili.com/?spm_id_from=333.337.0.0" class="tooltipped" target="_blank"
+                        data-tooltip="关注我的Facebook: https://www.bilibili.com/?spm_id_from=333.337.0.0" data-position="top"
+                        data-delay="50">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    
+
+                        
+
+                                
+                                    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=524706685"
+                                        class="tooltipped" target="_blank"
+                                        data-tooltip="QQ联系我: 524706685" data-position="top"
+                                        data-delay="50">
+                                        <i class="fab fa-qq"></i>
+                                    </a>
+                                    
+
+                                        
+                                            <a href="https://weibo.com/u/3649086851" class="tooltipped" target="_blank"
+                                                data-tooltip="关注我的微博: https://weibo.com/u/3649086851" data-position="top"
+                                                data-delay="50">
+                                                <i class="fab fa-weibo"></i>
+                                            </a>
+                                            
+
+                                                
+
+                                                        
+                                                            <a href="/atom.xml" class="tooltipped"
+                                                                target="_blank" data-tooltip="其他好玩的网页"
+                                                                data-position="top" data-delay="50">
+                                                                <i class="fas fa-rss"></i>
+                                                            </a>
+                                                            </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

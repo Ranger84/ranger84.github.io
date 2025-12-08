@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="图片展示页面制作笔记（一）, 眠らない25時">
-    <meta name="description" content="图片展示页面制作笔记（一）做了一个储存设计素材的页面。其中只展示指定数量的图片的代码和可以检测文件夹里所有图片并显示出来的代码都很有学习意义。下面先讲展示指定数量图片的代码。
-JavaScript基础知识部分1.querySelector(">
+    <meta name="keywords" content="前端学习笔记（二）图片展示页面制作笔记（一）, 眠らない25時">
+    <meta name="description" content="前端学习笔记（二）图片展示页面制作笔记（一）：异步编程部分做了一个储存设计素材的页面。其中只展示指定数量的图片的代码和可以检测文件夹里所有图片并显示出来的代码都很有学习意义。下面先讲展示指定数量图片的代码。
+querySelector()方">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@ JavaScript基础知识部分1.querySelector(">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>图片展示页面制作笔记（一） | 眠らない25時</title>
+    <title>前端学习笔记（二）图片展示页面制作笔记（一） | 眠らない25時</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -363,12 +363,12 @@ JavaScript基础知识部分1.querySelector(">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">图片展示页面制作笔记（一）</h1>
+                    <h1 class="description center-align post-title">前端学习笔记（二）图片展示页面制作笔记（一）</h1>
                 </div>
             </div>
         </div>
@@ -415,21 +415,21 @@ JavaScript基础知识部分1.querySelector(">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2025-11-23
+                    2025-11-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    3.9k
+                    6.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    15 Min
+                    27 Min
                 </div>
                 
 
@@ -449,42 +449,44 @@ JavaScript基础知识部分1.querySelector(">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="图片展示页面制作笔记（一）"><a href="#图片展示页面制作笔记（一）" class="headerlink" title="图片展示页面制作笔记（一）"></a>图片展示页面制作笔记（一）</h1><p>做了一个储存设计素材的页面。<br>其中只展示指定数量的图片的代码和可以检测文件夹里所有图片并显示出来的代码都很有学习意义。下面先讲展示指定数量图片的代码。</p>
-<h2 id="JavaScript基础知识部分"><a href="#JavaScript基础知识部分" class="headerlink" title="JavaScript基础知识部分"></a>JavaScript基础知识部分</h2><h3 id="1-querySelector-方法"><a href="#1-querySelector-方法" class="headerlink" title="1.querySelector()方法"></a>1.querySelector()方法</h3><p><code>document.querySelector()</code>方法可以选择文档中符合CSS选择器规则的<strong>第一个</strong>元素。<br>例如：</p>
+                <h1 id="前端学习笔记（二）图片展示页面制作笔记（一）：异步编程部分"><a href="#前端学习笔记（二）图片展示页面制作笔记（一）：异步编程部分" class="headerlink" title="前端学习笔记（二）图片展示页面制作笔记（一）：异步编程部分"></a>前端学习笔记（二）图片展示页面制作笔记（一）：异步编程部分</h1><p>做了一个储存设计素材的页面。<br>其中只展示指定数量的图片的代码和可以检测文件夹里所有图片并显示出来的代码都很有学习意义。下面先讲展示指定数量图片的代码。</p>
+<h2 id="querySelector-方法"><a href="#querySelector-方法" class="headerlink" title="querySelector()方法"></a>querySelector()方法</h2><p><code>document.querySelector()</code>方法可以选择文档中符合 CSS 选择器规则的<strong>第一个</strong>元素。<br>例如：</p>
 <blockquote>
 <p>document.querySelector(“p”);</p>
 </blockquote>
-<p>可以选择文档中第一个p元素。</p>
+<p>可以选择文档中第一个 p 元素。</p>
 <blockquote>
 <p>document.querySelector(“.myclass”);</p>
 </blockquote>
-<p>可以选择文档中第一个class为”myclass”的元素。</p>
+<p>可以选择文档中第一个 class 为”myclass”的元素。</p>
 <blockquote>
 <p>document.querySelector(“#myid”);</p>
 </blockquote>
-<p>可以选择文档中第一个id为”myid”的元素。</p>
-<p><code>document.querySelectorAll()</code>方法可以选择文档中符合CSS选择器规则的<strong>所有</strong>元素。</p>
+<p>可以选择文档中第一个 id 为”myid”的元素。</p>
+<p><code>document.querySelectorAll()</code>方法可以选择文档中符合 CSS 选择器规则的<strong>所有</strong>元素。</p>
 <h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><blockquote>
 <p>const elements &#x3D; document.querySelectorAll(selector);</p>
 </blockquote>
-<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p><code>selector</code>：一个字符串，包含一个或多个CSS选择器<br>返回值：一个<code>NodeList</code>集合（类似数组但不是数组）</p>
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><p><code>selector</code>：一个字符串，包含一个或多个 CSS 选择器<br>返回值：一个<code>NodeList</code>集合（类似数组但不是数组）</p>
 <p>但是，使用<code>querySelectorAll()</code>方法时，后面需要用<code>forEach()</code>方法遍历集合中的元素。<br>例如：</p>
 <blockquote>
 <p><code>&lt;script&gt;document.querySelectorAll(&quot;p&quot;).style.backgroundColor = &quot;red&quot;;&lt;/script&gt;</code></p>
 </blockquote>
-<p>是无法将所有p元素的背景颜色设置为红色的。</p>
+<p>是无法将所有 p 元素的背景颜色设置为红色的。</p>
 <p>正确的写法应该是：</p>
 <blockquote>
 <p><code>&lt;script&gt;document.querySelectorAll(&quot;p&quot;).forEach(p =&gt; p.style.backgroundColor = &quot;red&quot;)&lt;/script&gt;</code></p>
 </blockquote>
 <h2 id="检测图片是否存在的函数"><a href="#检测图片是否存在的函数" class="headerlink" title="检测图片是否存在的函数"></a>检测图片是否存在的函数</h2><p>为什么需要这个函数呢？因为图片有可能是各种不同格式的。<br>代码片段如下</p>
 <blockquote>
-<p>&#x2F;&#x2F;检测图片是否存在的函数<br>async function checkImageExists(url) {<br>    return new Promise((resolve, reject) &#x3D;&gt; {<br>       const img &#x3D; new Image();<br>        img.onload &#x3D; () &#x3D;&gt; {<br>            resolve(true);<br>        };<br>        img.onerror &#x3D; () &#x3D;&gt; {<br>            resolve(false);<br>        };<br>        img.src &#x3D; url;<br>    });<br>};</p>
+<p>&#x2F;&#x2F;检测图片是否存在的函数<br>async function checkImageExists(url) {<br>return new Promise((resolve, reject) &#x3D;&gt; {<br>const img &#x3D; new Image();<br>img.onload &#x3D; () &#x3D;&gt; {<br>resolve(true);<br>};<br>img.onerror &#x3D; () &#x3D;&gt; {<br>resolve(false);<br>};<br>img.src &#x3D; url;<br>});<br>};</p>
 </blockquote>
 <h3 id="为什么要使用异步函数？"><a href="#为什么要使用异步函数？" class="headerlink" title="为什么要使用异步函数？"></a>为什么要使用异步函数？</h3><ol>
-<li>图片加载是异步操作<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 图片加载需要时间，我们不知道什么时候完成</span></span><br><span class="line"><span class="keyword">const</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>();</span><br><span class="line">img.<span class="property">src</span> = <span class="string">&#x27;https://example.com/image.jpg&#x27;</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 这时候图片可能还没加载完</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;这里执行时，图片可能还在下载中...&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>图片加载是异步操作</li>
 </ol>
-<p>因为图片的加载是异步的，如果直接使用同步的方式，会导致页面卡顿。<br>2. 需要等待加载结果<br>需要异步等待结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 图片加载需要时间，我们不知道什么时候完成</span></span><br><span class="line"><span class="keyword">const</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>();</span><br><span class="line">img.<span class="property">src</span> = <span class="string">&quot;https://example.com/image.jpg&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这时候图片可能还没加载完</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;这里执行时，图片可能还在下载中...&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>因为图片的加载是异步的，如果直接使用同步的方式，会导致页面卡顿。 2. 需要等待加载结果<br>需要异步等待结果</p>
 <h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><details>
   <summary>点击这里查看代码</summary>
   <pre><code class="language-javascript">
@@ -567,7 +569,6 @@ return exists;       // 第3步：立即返回false
 <p>}<br></code></pre></p>
 </details>
 
-
 <p>同步版本的时间线是这样的</p>
 <details><summary>点击这里查看代码解析</summary>
 <pre><code class="language-javascript">
@@ -590,7 +591,7 @@ console.log('2. 继续执行其他代码');
 <p>&#x2F;&#x2F; 输出：<br>&#x2F;&#x2F; 1. 调用异步函数<br>&#x2F;&#x2F; 2. 继续执行其他代码<br>&#x2F;&#x2F; [等待图片加载…]<br>&#x2F;&#x2F; 3. 得到结果: true 或 false<br></code></pre></details></p>
 <p>可见，同步版本将总是按照从上到下的顺序来执行，而上面的回调函数由于需要等待图片加载结果才能执行。同步版本失败就是因为代码按顺序执行，等不到异步回调完成就返回了。即，根本原因是：<strong>同步代码无法等待异步操作完成</strong>，因为：</p>
 <ol>
-<li><p>单线程特性：JavaScript是单线程的，不能”暂停”等待</p>
+<li><p>单线程特性：JavaScript 是单线程的，不能”暂停”等待</p>
 </li>
 <li><p>非阻塞设计：如果同步等待，整个页面会卡住</p>
 </li>
@@ -608,7 +609,7 @@ console.log('2. 继续执行其他代码');
 <li><p>“未来” &#x3D; 该图片加载完成时：可能是几毫秒，也可能是几秒后</p>
 </li>
 </ul>
-<p>当检测26张图片时，浏览器会同时发起多个请求，每张图片在自己的加载完成后立即触发回调，而不是等待所有图片都加载完成！</p>
+<p>当检测 26 张图片时，浏览器会同时发起多个请求，每张图片在自己的加载完成后立即触发回调，而不是等待所有图片都加载完成！</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用异步函数的原因是：</p>
 <ol>
 <li><p>图片加载本质是异步的 - 需要时间，结果不是立即可得</p>
@@ -620,7 +621,7 @@ console.log('2. 继续执行其他代码');
 <li><p>代码可读性 - async&#x2F;await 让异步代码看起来像同步代码</p>
 </li>
 </ol>
-<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>什么时候需要使用async&#x2F;await</p>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>什么时候需要使用 async&#x2F;await</p>
 <ol>
 <li>当你有连续的异步操作时（避免嵌套越来越深的回调地狱）</li>
 <li>当需要基于前一个结果做判断时</li>
@@ -657,7 +658,7 @@ console.log('2. 继续执行其他代码');
 </ul>
 <p>在我的代码中的依赖关系如下所示：</p>
 <blockquote>
-<p>checkImageExists(url)        ← 基础层（返回 Promise）<br>    ↓ 等待完成<br>getImageURL(number)          ← 中间层（async&#x2F;await）<br>    ↓ 等待完成<br>createImageGallery()         ← 业务层（async&#x2F;await）<br>    ↓ 等待完成<br>displayGallery()             ← 展示层（async&#x2F;await）</p>
+<p>checkImageExists(url) ← 基础层（返回 Promise）<br>↓ 等待完成<br>getImageURL(number) ← 中间层（async&#x2F;await）<br> ↓ 等待完成<br>createImageGallery() ← 业务层（async&#x2F;await）<br>↓ 等待完成<br>displayGallery() ← 展示层（async&#x2F;await）</p>
 </blockquote>
 <p>依赖链条</p>
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
@@ -665,14 +666,14 @@ console.log('2. 继续执行其他代码');
 checkImageExists('url') 
     → 不需要等待其他函数 → 不需要 async
 
-<p>getImageURL(1)<br>    → 需要等待 checkImageExists 完成 → 需要 async&#x2F;await</p>
-<p>createImageGallery()<br>    → 需要等待所有 getImageURL 完成 → 需要 async&#x2F;await  </p>
-<p>displayGallery()<br>    → 需要等待 createImageGallery 完成 → 需要 async&#x2F;await<br></code></pre></details></p>
-<p>当函数B需要等待函数A完成才能继续时：</p>
-<p>在函数B内部，在调用函数A的地方前面加<code>await</code></p>
-<p>在函数B本身前面加<code>async</code></p>
-<p><strong>更清晰的判断规则</strong><br>规则1：函数内部有 await → 函数前加 async<br>规则2：需要等待其他函数完成 → 前面加 await<br>规则3：没有依赖关系 → 不需要 await</p>
-<h2 id="关于resolve和reject"><a href="#关于resolve和reject" class="headerlink" title="关于resolve和reject"></a>关于resolve和reject</h2><p>在以下代码片段中，我们可以看到，reject参数并未被使用：</p>
+<p>getImageURL(1)<br>→ 需要等待 checkImageExists 完成 → 需要 async&#x2F;await</p>
+<p>createImageGallery()<br>→ 需要等待所有 getImageURL 完成 → 需要 async&#x2F;await</p>
+<p>displayGallery()<br>→ 需要等待 createImageGallery 完成 → 需要 async&#x2F;await<br></code></pre></details></p>
+<p>当函数 B 需要等待函数 A 完成才能继续时：</p>
+<p>在函数 B 内部，在调用函数 A 的地方前面加<code>await</code></p>
+<p>在函数 B 本身前面加<code>async</code></p>
+<p><strong>更清晰的判断规则</strong><br>规则 1：函数内部有 await → 函数前加 async<br>规则 2：需要等待其他函数完成 → 前面加 await<br>规则 3：没有依赖关系 → 不需要 await</p>
+<h2 id="关于-resolve-和-reject"><a href="#关于-resolve-和-reject" class="headerlink" title="关于 resolve 和 reject"></a>关于 resolve 和 reject</h2><p>在以下代码片段中，我们可以看到，reject 参数并未被使用：</p>
 <details>
   <summary>点击这里查看代码</summary>
   <pre><code class="language-javascript">
@@ -707,7 +708,7 @@ async function checkImageExists(url) &#123;
 
 <p>原因：</p>
 <ol>
-<li>设计意图：检测功能VS确保功能<details>
+<li>设计意图：检测功能 VS 确保功能<details>
   <summary>点击这里查看代码</summary>
   <pre><code class="language-javascript">
   // 当前设计：回答"图片是否存在？"
@@ -719,9 +720,18 @@ async function checkImageExists(url) &#123;
      img.onerror = () => resolve(false); // 不存在 → 也是正常结果
      img.src = url;
  &#125;);
-&#125;</li>
+&#125;
+// 如果使用 reject：回答"图片必须存在"
+async function ensureImageExists(url) &#123;
+ return new Promise((resolve, reject) => &#123;
+     const img = new Image();
+     img.onload = () => resolve(true);   // 成功
+     img.onerror = () => reject(new Error('图片不存在')); // 失败
+     img.src = url;
+ &#125;);
+&#125;
+</code></pre></li>
 </ol>
-<p>&#x2F;&#x2F; 如果使用 reject：回答”图片必须存在”<br>async function ensureImageExists(url) &#123;<br>    return new Promise((resolve, reject) &#x3D;&gt; &#123;<br>        const img &#x3D; new Image();<br>        img.onload &#x3D; () &#x3D;&gt; resolve(true);   &#x2F;&#x2F; 成功<br>        img.onerror &#x3D; () &#x3D;&gt; reject(new Error(‘图片不存在’)); &#x2F;&#x2F; 失败<br>        img.src &#x3D; url;<br>    &#125;);<br>&#125;<br></code></pre></p>
 </details>
 
 <h3 id="最佳实践总结"><a href="#最佳实践总结" class="headerlink" title="最佳实践总结"></a>最佳实践总结</h3><p>使用 resolve 的情况：</p>
@@ -743,7 +753,7 @@ async function checkImageExists(url) &#123;
 </li>
 </ul>
 <p>思考：此处无法加载图片是一种失败结果吗？或者说我们应该将它当作一种失败结果吗？</p>
-<p>对比<br>设计1：当做失败（使用rejet）</p>
+<p>对比<br>设计 1：当做失败（使用 rejet）</p>
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
 function checkImageExistsAsFailure(url) &#123;
     return new Promise((resolve, reject) => &#123;
@@ -754,7 +764,7 @@ function checkImageExistsAsFailure(url) &#123;
     &#125;);
 &#125;
 
-<p>&#x2F;&#x2F; 使用时的语义：<br>try &#123;<br>    const exists &#x3D; await checkImageExistsAsFailure(url);<br>    &#x2F;&#x2F; 这里只知道”成功加载”的情况<br>&#125; catch (error) &#123;<br>    &#x2F;&#x2F; 但”加载失败”可能包含多种情况：<br>    &#x2F;&#x2F; - 图片真的不存在 ❓<br>    &#x2F;&#x2F; - 网络暂时问题 ❓<br>    &#x2F;&#x2F; - 服务器错误 ❓<br>    &#x2F;&#x2F; - 跨域限制 ❓<br>    &#x2F;&#x2F; 调用者无法区分这些情况<br>&#125;</code></pre></details></p>
+<p>&#x2F;&#x2F; 使用时的语义：<br>try &#123;<br>const exists &#x3D; await checkImageExistsAsFailure(url);<br>&#x2F;&#x2F; 这里只知道”成功加载”的情况<br>&#125; catch (error) &#123;<br>&#x2F;&#x2F; 但”加载失败”可能包含多种情况：<br>&#x2F;&#x2F; - 图片真的不存在 ❓<br>&#x2F;&#x2F; - 网络暂时问题 ❓<br> &#x2F;&#x2F; - 服务器错误 ❓<br>&#x2F;&#x2F; - 跨域限制 ❓<br>&#x2F;&#x2F; 调用者无法区分这些情况<br>&#125;</code></pre></details></p>
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
 </code></pre></details>
 设计2：当做正常结果（使用resolve）
@@ -768,16 +778,17 @@ function checkImageExistsAsResult(url) &#123;
     &#125;);
 &#125;
 
-<p>&#x2F;&#x2F; 使用时的语义：<br>const exists &#x3D; await checkImageExistsAsResult(url);<br>&#x2F;&#x2F; exists &#x3D; false 表示：<br>&#x2F;&#x2F; “这个URL当前无法访问到有效图片”<br>&#x2F;&#x2F; 具体原因对您的业务不重要<br></code></pre></details></p>
-<p>这里需要注意：这里的函数需要检测图片是否存在，一旦一张某序号的图片不存在，就开始检测下一张。当我们使用reject的时候，就无法使用<code>Promise.all</code>进行批量处理，这时候需要改用<code>Promise.allSettled</code>来处理。</p>
+<p>&#x2F;&#x2F; 使用时的语义：<br>const exists &#x3D; await checkImageExistsAsResult(url);<br>&#x2F;&#x2F; exists &#x3D; false 表示：<br>&#x2F;&#x2F; “这个 URL 当前无法访问到有效图片”<br>&#x2F;&#x2F; 具体原因对您的业务不重要<br></code></pre></details></p>
+<p>这里需要注意：这里的函数需要检测图片是否存在，一旦一张某序号的图片不存在，就开始检测下一张。当我们使用 reject 的时候，就无法使用<code>Promise.all</code>进行批量处理，这时候需要改用<code>Promise.allSettled</code>来处理。</p>
 <p>这里有一点：The Promise.all() method returns a single Promise from a list of promises, when all promises <strong>fulfill</strong>.</p>
-<p>Promise.all会在第一个<code>reject</code>处中断</p>
-<h3 id="关于async-await和-then-catch"><a href="#关于async-await和-then-catch" class="headerlink" title="关于async&#x2F;await和.then()&#x2F;.catch()"></a>关于async&#x2F;await和.then()&#x2F;.catch()</h3><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+<p>Promise.all 会在第一个<code>reject</code>处中断</p>
+<p><code>resolve</code>和<code>reject</code>是 Promise 中的两种状态转变方法。<code>resolve</code>通常用于表示操作成功并返回一个结果，而<code>reject</code>用于表示操作失败并传递错误信息。在这段代码中，作者选择用 <code>resolve</code>来处理所有的结果，包括成功和失败，因为失败的情况已经通过<code>false</code>来表示，而没有必要使用<code>reject</code>来抛出异常。如果你不希望使用<code>reject</code>来处理错误，并且只是希望通过返回<code>false</code>来表示失败，那么使用<code>resolve(false)</code>是完全可以的。</p>
+<h2 id="关于-async-await-和-then-catch"><a href="#关于-async-await-和-then-catch" class="headerlink" title="关于 async&#x2F;await 和.then()&#x2F;.catch()"></a>关于 async&#x2F;await 和.then()&#x2F;.catch()</h2><details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
 // 这两个函数是等价的：
 
-<p>&#x2F;&#x2F; async&#x2F;await 版本<br>async function asyncVersion() &#123;<br>    try &#123;<br>        const a &#x3D; await task1();<br>        const b &#x3D; await task2(a);<br>        return b;<br>    &#125; catch (error) &#123;<br>        console.error(error);<br>        return null;<br>    &#125;<br>&#125;</p>
-<p>&#x2F;&#x2F; .then()&#x2F;.catch() 版本<br>function thenVersion() &#123;<br>    return task1()<br>        .then(a &#x3D;&gt; task2(a))<br>        .catch(error &#x3D;&gt; &#123;<br>            console.error(error);<br>            return null;<br>        &#125;);<br>&#125;<br></code></pre></details></p>
-<h3 id="关于checkImageExists-函数返回值的问题"><a href="#关于checkImageExists-函数返回值的问题" class="headerlink" title="关于checkImageExists()函数返回值的问题"></a>关于checkImageExists()函数返回值的问题</h3><p><strong>思考：checkImageExists()函数的返回值，究竟是<code>return new Promise()</code>，即返回一个Promise对象，还是返回<code>resolve</code>中传递的true和false？</strong></p>
+<p>&#x2F;&#x2F; async&#x2F;await 版本<br>async function asyncVersion() &#123;<br>try &#123;<br>const a &#x3D; await task1();<br>const b &#x3D; await task2(a);<br>return b;<br>&#125; catch (error) &#123;<br>console.error(error);<br>return null;<br>&#125;<br>&#125;</p>
+<p>&#x2F;&#x2F; .then()&#x2F;.catch() 版本<br>function thenVersion() &#123;<br>return task1()<br>.then(a &#x3D;&gt; task2(a))<br>.catch(error &#x3D;&gt; &#123;<br>console.error(error);<br>return null;<br>&#125;);<br>&#125;<br></code></pre></details></p>
+<h2 id="关于-checkImageExists-函数返回值的问题"><a href="#关于-checkImageExists-函数返回值的问题" class="headerlink" title="关于 checkImageExists()函数返回值的问题"></a>关于 checkImageExists()函数返回值的问题</h2><p><strong>思考：checkImageExists()函数的返回值，究竟是<code>return new Promise()</code>，即返回一个 Promise 对象，还是返回<code>resolve</code>中传递的 true 和 false？</strong></p>
 <p><strong>正确答案：返回的是 Promise 对象</strong></p>
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
 async function checkImageExists(url) &#123;
@@ -807,7 +818,7 @@ function giveGift() &#123;
 &#125;
 
 <p>const giftBox &#x3D; giveGift(); &#x2F;&#x2F; 得到空盒子(Promise)<br>&#x2F;&#x2F; 稍后打开盒子才能拿到手表(true&#x2F;false)<br>const actualGift &#x3D; await giftBox; &#x2F;&#x2F; 得到手表<br></code></pre></details></p>
-<h4 id="执行过程分解"><a href="#执行过程分解" class="headerlink" title="执行过程分解"></a>执行过程分解</h4><p>步骤1：函数调用时</p>
+<h4 id="执行过程分解"><a href="#执行过程分解" class="headerlink" title="执行过程分解"></a>执行过程分解</h4><p>步骤 1：函数调用时</p>
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
 const returnValue = checkImageExists('image.jpg');
 // 此时：
@@ -817,8 +828,7 @@ const returnValue = checkImageExists('image.jpg');
 // - resolve(true/false) 还没有执行！
 </code></pre></details>
 
-
-<p>步骤2：图片加载完成后</p>
+<p>步骤 2：图片加载完成后</p>
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
 // 某个未来时间点：
 // img.onload() 或 img.onerror() 执行
@@ -827,22 +837,20 @@ const returnValue = checkImageExists('image.jpg');
 // → Promise 的"结果值"被设置为 true 或 false
 </code></pre></details>
 
-
-
-<p>步骤3：使用结果时</p>
+<p>步骤 3：使用结果时</p>
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
 // 通过 await 或 .then() 访问"结果值"
 const actualBoolean = await returnValue; // 得到 true/false
 </code></pre></details>
-#### 为什么这样设计？
-同步函数 vs 异步函数
+
+<h4 id="为什么这样设计？"><a href="#为什么这样设计？" class="headerlink" title="为什么这样设计？"></a>为什么这样设计？</h4><p>同步函数 vs 异步函数</p>
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
 // 同步函数：直接返回值
 function syncFunction() &#123;
     return true; // ← 立即返回 true
 &#125;
 
-<p>&#x2F;&#x2F; 异步函数：返回”值的容器”<br>function asyncFunction() &#123;<br>    return new Promise((resolve) &#x3D;&gt; &#123;<br>        setTimeout(() &#x3D;&gt; &#123;<br>            resolve(true); &#x2F;&#x2F; ← 设置容器的内容<br>        &#125;, 1000);<br>    &#125;); &#x2F;&#x2F; ← 立即返回容器(Promise)<br>&#125;<br></code></pre></details></p>
+<p>&#x2F;&#x2F; 异步函数：返回”值的容器”<br>function asyncFunction() &#123;<br>return new Promise((resolve) &#x3D;&gt; &#123;<br>setTimeout(() &#x3D;&gt; &#123;<br>resolve(true); &#x2F;&#x2F; ← 设置容器的内容<br>&#125;, 1000);<br>&#125;); &#x2F;&#x2F; ← 立即返回容器(Promise)<br>&#125;<br></code></pre></details></p>
 <h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><ul>
 <li><p>函数返回的是：<code>Promise</code>对象</p>
 </li>
@@ -851,8 +859,8 @@ function syncFunction() &#123;
 </ul>
 <p>两者关系是：<code>Promise</code>是容器，<code>true/false</code>是容器里的内容</p>
 <p>所以当您调用 checkImageExists() 时，得到的是一个”装有布尔值的盒子”，而不是布尔值本身。需要打开盒子（用<code>await</code>或<code>.then()）</code>才能拿到里面的<code>true/false</code>。</p>
-<p>是否可以这样理解：checkImageExists函数调用时，Promise被立刻调用和返回，此时Promise对象里还没有内容；当得出图片加载结果（成功或者失败）时，resolve（true）或resolve（false）执行，Promise的状态被更改，同时Promise对象里被装入true或false。</p>
-<p>完全正确！<br>阶段1：函数调用时</p>
+<h4 id="追加理解"><a href="#追加理解" class="headerlink" title="追加理解"></a>追加理解</h4><p>是否可以这样理解：checkImageExists 函数调用时，Promise 被立刻调用和返回，此时 Promise 对象里还没有内容；当得出图片加载结果（成功或者失败）时，resolve（true）或 resolve（false）执行，Promise 的状态被更改，同时 Promise 对象里被装入 true 或 false。</p>
+<p>完全正确！<br>阶段 1：函数调用时</p>
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
 const promise = checkImageExists('image.jpg');
 // ✅ 您的理解：Promise被立刻调用和返回
@@ -883,9 +891,304 @@ const promise = checkImageExists('image.jpg');
 </code></pre></details>
 状态变化过程：
 <details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 初始状态
+Promise &#123;
+    state: 'pending',    // 进行中
+    value: undefined     // 还没有值
+&#125;
+
+<p>&#x2F;&#x2F; resolve(true) 执行后<br>Promise &#123;<br>state: ‘fulfilled’, &#x2F;&#x2F; 已完成<br>value: true &#x2F;&#x2F; 装入了 true<br>&#125;</p>
+<p>&#x2F;&#x2F; resolve(false) 执行后<br>Promise &#123;<br>state: ‘fulfilled’, &#x2F;&#x2F; 已完成<br> value: false &#x2F;&#x2F; 装入了 false<br>&#125;<br></code></pre></details></p>
+<p>这种”先给容器，后装内容”的设计正是 JavaScript 异步编程的精髓所在。<br><strong>以下是进一步理解和总结</strong><br>也就是说，异步编程中 Promise 对象的这种“异步性”体现在：Promise 对象的返回和 Promise 对象状态的改变以及对象中内容的传入不是同时的，函数调用会立刻先得到一个状态为 pending 且其中没有内容的 Promise 对象，当我们需要等待完成的操作（比如加载图片、读取文件等）完成后，resolve 和 reject 会将 Promise 的状态改变为 fulfilled 或 rejected 并向 Promise 中传入内容。这样理解对吗？</p>
+<p>完全正确！<br>Promise 异步性的核心本质：</p>
+<ol>
+<li>时间上的分离<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 时间点1：立即返回"空盒子"
+const promise = checkImageExists('image.jpg'); 
+// ↑ 立即得到 Promise &#123;<pending>&#125;</li>
+</ol>
+<p>&#x2F;&#x2F; 时间点 2：稍后填充内容<br>&#x2F;&#x2F; (图片加载完成后…)<br>&#x2F;&#x2F; resolve(true) → Promise &#123;<fulfilled>: true&#125;<br></code></pre></details></p>
+<ol start="2">
+<li>状态变化的三个阶段<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 阶段1：初始状态
+Promise &#123;
+ [[PromiseState]]: "pending",
+ [[PromiseResult]]: undefined
+&#125;</li>
+</ol>
+<p>&#x2F;&#x2F; 阶段 2：成功完成<br>Promise &#123;<br>[[PromiseState]]: “fulfilled”,<br>[[PromiseResult]]: true<br>&#125;</p>
+<p>&#x2F;&#x2F; 阶段 3：失败完成<br>Promise &#123;<br>[[PromiseState]]: “rejected”,<br>[[PromiseResult]]: Error 对象<br>&#125;<br></code></pre></details></p>
+<p>在项目中的具体体现<br>图片检测的完整流程</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 您的代码完美体现了这种"异步性"
+async function checkImageExists(url) &#123;
+    // 步骤1：立即创建并返回"空Promise"
+    return new Promise((resolve) => &#123;
+        // 步骤2：启动异步操作（图片加载）
+        const img = new Image();
+        img.src = url;
+        
+<pre><code>    // 步骤3：设置回调（未来某个时间执行）
+    img.onload = () =&gt; &#123;
+        // 步骤4：异步操作完成，填充Promise内容
+        resolve(true); // ← 这时才填入 true
+    &#125;;
+    
+    img.onerror = () =&gt; &#123;
+        // 步骤4：异步操作完成，填充Promise内容  
+        resolve(false); // ← 这时才填入 false
+    &#125;;
+&#125;);
+</code></pre>
+<p>}<br></code></pre></details></p>
+<p><strong>这种设计的价值</strong><br>解决的核心问题</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// ❌ 同步世界的限制：必须等待完成才能返回
+function syncWorld() &#123;
+    const img = new Image();
+    img.src = 'image.jpg';
+    // 这里必须阻塞等待图片加载完成...
+    // 但JavaScript是单线程，阻塞会冻结整个页面！
+    return result; // 无法立即返回
+&#125;
+
+<p>&#x2F;&#x2F; ✅ Promise 的解决方案：先返回”凭证”，后交付结果<br>function asyncWorld() &#123;<br>return new Promise((resolve) &#x3D;&gt; &#123;<br>const img &#x3D; new Image();<br>img.src &#x3D; ‘image.jpg’;<br>img.onload &#x3D; () &#x3D;&gt; resolve(true);<br>&#125;);<br>&#x2F;&#x2F; 立即返回 Promise，不阻塞主线程<br>&#125;<br></code></pre></details><br>餐厅点餐的比喻</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 您：点一份披萨
+const orderPromise = orderPizza();
+
+<p>&#x2F;&#x2F; 立即得到：订单小票(Promise)<br>&#x2F;&#x2F; - 状态：烹饪中(pending)<br>&#x2F;&#x2F; - 内容：暂无(undefined)</p>
+<p>&#x2F;&#x2F; 厨师：制作披萨（异步操作）<br>&#x2F;&#x2F; 完成后：叫号(resolve)</p>
+<p>&#x2F;&#x2F; 您得到：实际的披萨(true&#x2F;false)<br>const actualPizza &#x3D; await orderPromise;<br></code></pre></details></p>
+<p><strong>总结</strong></p>
+<p>Promise 的异步性体现在：</p>
+<ol>
+<li><p>立即返回：函数调用立刻得到 Promise 对象</p>
+</li>
+<li><p>延迟填充：对象内容在异步操作完成后才填入</p>
+</li>
+<li><p>状态分离：返回时间 ≠ 完成时间 ≠ 结果获取时间</p>
+</li>
+<li><p>非阻塞：主线程不被阻塞，可以继续其他工作</p>
+</li>
+</ol>
+<p>这正是 JavaScript 能够处理异步操作而不会冻结用户界面的关键机制！</p>
+<h2 id="await-和-then-的作用"><a href="#await-和-then-的作用" class="headerlink" title="await 和 .then() 的作用"></a>await 和 .then() 的作用</h2><p>await 和 .then() 都是用来”等待并读取异步函数结果”的机制，只是语法不同。</p>
+<p>两种”打开盒子”的方式<br>方式 1：await（同步风格）</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 用 await "打开盒子"，直接拿到里面的值
+async function example1() &#123;
+    console.log('准备打开盒子...');
+    
+<pre><code>const box = checkImageExists(&#39;image.jpg&#39;);      // 拿到盒子
+const actualValue = await box;                  // 打开盒子，拿到里面的 true/false
+
+console.log(&#39;盒子里的内容:&#39;, actualValue);       // 直接使用布尔值
+return actualValue;
+</code></pre>
+<p>}<br></code></pre></details><br>方式2：.then()（回调风格）</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 用 .then() "打开盒子"，在回调中处理里面的值
+function example2() &#123;
+    console.log('准备打开盒子...');
+    
+<pre><code>const box = checkImageExists(&#39;image.jpg&#39;);      // 拿到盒子
+
+box.then(actualValue =&gt; &#123;                       // 打开盒子，在回调中拿到 true/false
+    console.log(&#39;盒子里的内容:&#39;, actualValue);   // 在回调中使用布尔值
+&#125;);
+
+// 注意：这里的代码会继续执行，不会等待盒子打开
+</code></pre>
+<p>}<br></code></pre></details></p>
+<p>执行时间线对比<br>await 的时间线：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+console.log('1. 开始');
+const box = checkImageExists('image.jpg');  // 拿到盒子
+console.log('2. 拿到盒子，准备打开...');
+
+<p>const value &#x3D; await box; &#x2F;&#x2F; 🛑 在这里等待盒子打开<br>console.log(‘3. 盒子打开，拿到:’, value); &#x2F;&#x2F; 拿到内容后继续<br>console.log(‘4. 结束’);</p>
+<p>&#x2F;&#x2F; 输出顺序：1 → 2 → (等待…) → 3 → 4<br></code></pre></details></p>
+<p>.then() 的时间线：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+console.log('1. 开始');
+const box = checkImageExists('image.jpg');  // 拿到盒子
+
+<p>box.then(value &#x3D;&gt; &#123;<br>console.log(‘3. 盒子打开，拿到:’, value); &#x2F;&#x2F; 回调中处理内容<br>&#125;);</p>
+<p>console.log(‘2. 继续执行其他代码…’); &#x2F;&#x2F; 🔄 不等待，继续执行<br>console.log(‘4. 结束’);</p>
+<p>&#x2F;&#x2F; 输出顺序：1 → 2 → 4 → (某个时间点) → 3<br></code></pre></details></p>
+<p>类比理解<br>await 就像：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// "我去餐厅点餐，在柜台前等着，直到拿到餐才离开"
+const order = placeOrder();
+const food = await order;        // 站在这里等
+eat(food);                       // 拿到后立即吃
 </code></pre></details>
 
+<p>.then() 就像：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// "我去餐厅点餐，拿到取餐号后去座位等着，听到叫号再去取"
+const order = placeOrder();
+order.then(food => &#123;             // 设置回调："餐好了叫我"
+    eat(food);                   // 叫到号时执行
+&#125;);
+findSeat();                      // 不等待，继续做其他事
+</code></pre></details>
 
+<p>总结：</p>
+<ul>
+<li><p>await：同步风格，暂停等待结果</p>
+</li>
+<li><p>.then()：回调风格，设置结果处理函数</p>
+</li>
+</ul>
+<p>-共同点：都是用来”打开 Promise 盒子，读取里面的值”</p>
+<p>在现代 JavaScript 中，await 更受欢迎，因为它让异步代码看起来像同步代码，更易读和维护！</p>
+<h2 id="async-函数的自动包装"><a href="#async-函数的自动包装" class="headerlink" title="async 函数的自动包装"></a>async 函数的自动包装</h2><p>思考：在下面这个代码片段中，getImageURL()函数返回的应该是 testUrl，也就是一个实际的 url，而 promises 是一个 Promise 对象的数组。为什么在函数 createImageGallery()中，可以用 promises.push(getImageURL(i));将每张图片的 url 推入 promises 数组？</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+async function getImageURL(number) &#123;
+    for (let format of imageFormats) &#123;
+        const testUrl = `https://raw.githubusercontent.com/Ranger84/Image_Repository_Picbed_PicGo/master/Color/Color_For_Design_$&#123;number&#125;.$&#123;format&#125;`;
+
+<pre><code>    // 这里必须等待检测结果！
+    const exists = await checkImageExists(testUrl);
+    if (exists) &#123;
+        console.log(`Image $&#123;number&#125; exists in $&#123;format&#125; format.`);
+        return testUrl;// 找到有效的图片
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F;生成所有图片卡片的函数<br>async function createImageGallery() {<br>const promises &#x3D; [];</p>
+<pre><code>// 为每张图片创建检测Promise
+for (let i = 1; i &lt;= totalImages; i++) &#123;
+    // 每个检测都是异步的
+    promises.push(getImageURL(i));
+&#125;
+
+// 等待所有图片URL检测完成
+// 等待所有异步检测完成
+const imageUrls = await Promise.all(promises);
+console.log(&#39;All image URLs:&#39;, imageUrls);
+// 这里才会得到所有图片的检测结果
+//用map生成图片元素
+const imageToDisplay = imageUrls.map((url, index) =&gt; &#123;
+    return `&lt;div class=&quot;img_card&quot;&gt;
+                &lt;img class=&quot;img_item&quot; src=&quot;$&#123;url&#125;&quot; alt=&quot;Color_For_Design_$&#123;index + 1&#125;&quot;&gt;
+            &lt;/div&gt;`;
+&#125;).join(&#39;&#39;);
+
+return imageToDisplay;
+</code></pre>
+<p>}<br></code></pre></details></p>
+<p>核心原因：async 函数的自动包装<br><strong>当函数声明为<code>async</code>时，它总是返回<code>Promise</code>对象，无论你实际返回什么。</strong></p>
+<p>具体分析：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+async function getImageURL(number) &#123;
+    for (let format of imageFormats) &#123;
+        const testUrl = `...$&#123;number&#125;.$&#123;format&#125;`;
+        const exists = await checkImageExists(testUrl);
+        
+<pre><code>    if (exists) &#123;
+        return testUrl; // ← 看起来返回的是字符串
+    &#125;
+&#125;
+// 如果没有找到，隐式返回 undefined
+</code></pre>
+<p>}</p>
+<p>&#x2F;&#x2F; 但实际上，JavaScript 会自动包装成：<br>async function getImageURL(number) {<br>&#x2F;&#x2F; 实际执行的是：<br>return Promise.resolve(testUrl); &#x2F;&#x2F; 自动包装！<br>}<br></code></pre></details></p>
+<p>注意 async 函数的特性：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 您写的：
+async function example() &#123;
+    return "hello"; // 字符串
+&#125;
+
+<p>&#x2F;&#x2F; JavaScript 实际做的：<br>function example() &#123;<br>return Promise.resolve(“hello”); &#x2F;&#x2F; 包装成 Promise<br>&#125;</p>
+<p>&#x2F;&#x2F; 所以：<br>const result &#x3D; example();<br>console.log(result); &#x2F;&#x2F; Promise &#123;<fulfilled>: “hello”&#125; 不是 “hello”<br></code></pre></details></p>
+<p>具体代码解析：</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+async function createImageGallery() &#123;
+    const promises = [];
+    
+<pre><code>for (let i = 1; i &lt;= 5; i++) &#123;
+    // getImageURL(i) 立即返回 Promise 对象
+    const promiseObject = getImageURL(i);
+    console.log(promiseObject); // Promise &#123;&lt;pending&gt;&#125;
+    
+    // 所以可以推入 promises 数组
+    promises.push(promiseObject);
+&#125;
+
+// 现在 promises 数组包含：
+// [Promise, Promise, Promise, Promise, Promise]
+
+// Promise.all 等待所有 Promise 完成
+const imageUrls = await Promise.all(promises);
+// 现在 imageUrls 包含：
+// [&quot;url1&quot;, &quot;url2&quot;, null, &quot;url4&quot;, null] ← 实际的 URL 字符串
+</code></pre>
+<p>}<br></code></pre></details></p>
+<p><strong>这是否说明只要有 async&#x2F;awai 就一定会用到 Promise？</strong><br>是的，完全正确！</p>
+<h3 id="async-await-和-Promise-的紧密关系"><a href="#async-await-和-Promise-的紧密关系" class="headerlink" title="async&#x2F;await 和 Promise 的紧密关系"></a>async&#x2F;await 和 Promise 的紧密关系</h3><ol>
+<li>async 函数总是返回 Promise：无论你返回什么，都会被包装成 Promise</li>
+<li>await 只能用于 Promise</li>
+</ol>
+<p><strong>它们的关系是”语法糖”：async&#x2F;await 是 Promise 的语法糖</strong></p>
+<h3 id="关键规则总结"><a href="#关键规则总结" class="headerlink" title="关键规则总结"></a>关键规则总结</h3><p>规则 1：有 async 就有 Promise</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 函数声明中有 async → 返回值一定是 Promise
+async function anyFunction() &#123;
+    return "anything"; // 自动变成 Promise.resolve("anything")
+&#125;
+</code></pre></details>
+
+<p>规则 2：有 await 就有 async</p>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// 函数内部有 await → 函数必须声明为 async
+async function mustBeAsync() &#123;
+    const result = await somePromise; // 有 await
+    return result;
+&#125;
+</code></pre></details>
+规则3：await 用于 Promise
+
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+// await 后面跟的是 Promise（或返回 Promise 的 async 函数）
+const value1 = await somePromise;
+const value2 = await someAsyncFunction();
+const value3 = await Promise.resolve("hello");
+</code></pre></details>
+
+<p><strong>总结</strong><br>是的，只要有 async&#x2F;await 就一定会用到 Promise，因为：</p>
+<ul>
+<li><p>async 函数必然返回 Promise</p>
+</li>
+<li><p>await 只能等待 Promise</p>
+</li>
+<li><p>async&#x2F;await 是 Promise 的语法糖</p>
+</li>
+<li><p>它们是一个不可分割的体系</p>
+</li>
+</ul>
+<p>同理：异步函数<code>createImageGallery()</code>返回的也是 Promise，但里面包装的是<code>imageToDisplay</code></p>
+<ul>
+<li><p>createImageGallery() 函数调用返回的是 Promise 对象</p>
+</li>
+<li><p>Promise 对象里面包装的是 imageToDisplay（HTML 字符串）</p>
+</li>
+<li><p>需要使用 await 才能从 Promise 中取出实际的 HTML 字符串</p>
+</li>
+</ul>
+<p>注意！！并不是：异步函数 createImageGallery()返回的 imageToDisplay 也是一个 Promise 对象<br>而是：</p>
+<ul>
+<li><p>✅ 对的：函数调用返回 Promise</p>
+</li>
+<li><p>❌ 不对：函数返回的不是 Promise，而是被自动包装成了 Promise</p>
+</li>
+</ul>
+<details><summary>点击这里查看代码解析</summary><pre><code class="language-javascript">
+</code></pre></details>
 
                 
             </div>
@@ -1038,9 +1341,9 @@ const promise = checkImageExists('image.jpg');
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="前端学习笔记（一）">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库">
                         
-                        <span class="card-title">前端学习笔记（一）</span>
+                        <span class="card-title">前端学习笔记（四）图片展示页面制作笔记（三）：进阶版本之分类查看图片库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1060,6 +1363,14 @@ const promise = checkImageExists('image.jpg');
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">前端</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1334,7 +1645,7 @@ const promise = checkImageExists('image.jpg');
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">100.9k</span>
+                        class="white-color">123.1k</span>
             
             
             

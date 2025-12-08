@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="异步编程之Promise的学习笔记, 眠らない25時">
-    <meta name="description" content="异步编程之Promise的学习笔记（一）
+    <meta name="keywords" content="前端学习笔记（一）异步编程之Promise, 眠らない25時">
+    <meta name="description" content="前端学习笔记（一）异步编程之Promise
 遇到难题了……梳理一下……
 
-什么是Promise？Promise 是异步编程的一种解决方案，是 JavaScript 中用于处理异步操作的对象，它代表了一个异步操作的最终完成（或失败）及其结果值。">
+什么是Promise？Promise 是异步编程的一种解决方案，是 JavaScript 中用于处理异步操作的对象，它代表了一个异步操作的最终完成（或失败）及其结果值">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>异步编程之Promise的学习笔记 | 眠らない25時</title>
+    <title>前端学习笔记（一）异步编程之Promise | 眠らない25時</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -365,12 +365,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">异步编程之Promise的学习笔记</h1>
+                    <h1 class="description center-align post-title">前端学习笔记（一）异步编程之Promise</h1>
                 </div>
             </div>
         </div>
@@ -424,14 +424,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    8.7k
+                    8.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    43 Min
+                    44 Min
                 </div>
                 
 
@@ -451,7 +451,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="异步编程之Promise的学习笔记（一）"><a href="#异步编程之Promise的学习笔记（一）" class="headerlink" title="异步编程之Promise的学习笔记（一）"></a>异步编程之Promise的学习笔记（一）</h1><blockquote>
+                <h1 id="前端学习笔记（一）异步编程之Promise"><a href="#前端学习笔记（一）异步编程之Promise" class="headerlink" title="前端学习笔记（一）异步编程之Promise"></a>前端学习笔记（一）异步编程之Promise</h1><blockquote>
 <p>遇到难题了……梳理一下……</p>
 </blockquote>
 <h2 id="什么是Promise？"><a href="#什么是Promise？" class="headerlink" title="什么是Promise？"></a>什么是Promise？</h2><p>Promise 是异步编程的一种解决方案，是 JavaScript 中用于处理异步操作的对象，它代表了一个<strong>异步操作的最终完成（或失败）</strong>及其结果值。</p>
@@ -601,7 +601,23 @@
 
 
 
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="执行器函数"><a href="#执行器函数" class="headerlink" title="执行器函数"></a>执行器函数</h2><p>执行器函数是Promise的核心概念</p>
+
+
+
+<h3 id="Promise的关键理解"><a href="#Promise的关键理解" class="headerlink" title="Promise的关键理解"></a>Promise的关键理解</h3><p>异步编程中Promise对象的这种“异步性”体现在：Promise对象的返回和Promise对象状态的改变以及对象中内容的传入不是同时的，函数调用会立刻先得到一个状态为pending且其中没有内容的Promise对象，当我们需要等待完成的操作（比如加载图片、读取文件等）完成后，resolve和reject会将Promise的状态改变为fulfilled或rejected并向Promise中传入内容。这样理解对吗？</p>
+<p>完全正确！<br>Promise 的异步性体现在：</p>
+<ol>
+<li><p>立即返回：函数调用立刻得到 Promise 对象</p>
+</li>
+<li><p>延迟填充：对象内容在异步操作完成后才填入</p>
+</li>
+<li><p>状态分离：返回时间 ≠ 完成时间 ≠ 结果获取时间</p>
+</li>
+<li><p>非阻塞：主线程不被阻塞，可以继续其他工作</p>
+</li>
+</ol>
+<p>这正是 JavaScript 能够处理异步操作而不会冻结用户界面的关键机制！</p>
+<h2 id="执行器函数"><a href="#执行器函数" class="headerlink" title="执行器函数"></a>执行器函数</h2><p>执行器函数是Promise的核心概念</p>
 <h3 id="什么是执行器函数？"><a href="#什么是执行器函数？" class="headerlink" title="什么是执行器函数？"></a>什么是执行器函数？</h3><p>执行器函数是传递给Promise构造函数的参数，它在Promise创建时立即同步执行。它负责启动异步操作，并根据操作结果决定Promise的最终状态。</p>
 <h3 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(executorFunction);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">executorFunction</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="comment">// 异步操作代码</span></span><br><span class="line">  <span class="comment">// 根据结果调用 resolve(value) 或 reject(reason)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="详细分析"><a href="#详细分析" class="headerlink" title="详细分析"></a>详细分析</h3><p>1.执行器函数的参数<br>执行器函数接收两个重要的函数作为参数：</p>
@@ -816,9 +832,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="异步编程之Promise的学习笔记">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="前端学习笔记（一）异步编程之Promise">
                         
-                        <span class="card-title">异步编程之Promise的学习笔记</span>
+                        <span class="card-title">前端学习笔记（一）异步编程之Promise</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1076,7 +1092,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">100.9k</span>
+                        class="white-color">123.1k</span>
             
             
             
